@@ -175,6 +175,6 @@ efficiency.py
 feature_time.py
 *.pptx
 time_cost.py
-models/target_models/*
+models/original_models/*
 models/onDevice_models/*
 models/onDevice_out_vec/*
