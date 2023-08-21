@@ -177,3 +177,4 @@ feature_time.py
 time_cost.py
 models/target_models/*
 models/onDevice_models/*
+models/onDevice_out_vec/*
