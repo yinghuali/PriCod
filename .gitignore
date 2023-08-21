@@ -160,8 +160,8 @@ cython_debug/
 .idea
 *__pycache__/
 mutation_models/
-data/
-test/
+data/*
+test/*
 Results.ipynb
 tables/*
 ResultAnalysis.ipynb
@@ -175,3 +175,4 @@ efficiency.py
 feature_time.py
 *.pptx
 time_cost.py
+models/target_models/*
