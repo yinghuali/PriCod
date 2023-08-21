@@ -30,10 +30,17 @@ def get_kill_feature(original_out_vec, onDevice_out_vec):
     return kill_feaure
 
 
-# def get_confidence_feature(original_out_vec, onDevice_out_vec):
-#     confidence_feaure = []
-#     original_pre_y = original_out_vec.argmax(axis=1)
-#     onDevice_pre_y = onDevice_out_vec.argmax(axis=1)
-#     for i in range
+def get_confidence_diff_feature(original_out_vec, onDevice_out_vec):
+    confidence_feaure = []
+    original_pre_y = original_out_vec.argmax(axis=1)
+    onDevice_pre_y = onDevice_out_vec.argmax(axis=1)
+    for i in range(len(original_pre_y)):
+        confidence_diff = abs(original_out_vec[i][original_pre_y[i]] - onDevice_out_vec[i][onDevice_pre_y[i]])
+        confidence_feaure.append(confidence_diff)
+    confidence_feaure = np.array(confidence_feaure)
+    return confidence_feaure
 
+
+a = get_confidence_diff_feature(original_out_vec, onDevice_out_vec)
+print(a)
 
