@@ -1,1 +1,1 @@
-python get_OnDevice.py --path_model './target_models/cifa10_vgg_20.pkl' --path_save_tflite './onDevice_models/cifa10_vgg_20.tflite'
+python convert2tflite.py --path_model './target_models/cifa10_vgg_20.pkl' --path_save_tflite './onDevice_models/cifa10_vgg_20.tflite'
