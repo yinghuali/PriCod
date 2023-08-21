@@ -244,10 +244,3 @@ def relative_entropy(original_out_vec, onDevice_out_vec):
     relative_entropy_feature = np.array(relative_entropy_feature)
     return relative_entropy_feature
 
-
-print(relative_entropy(original_out_vec, onDevice_out_vec))
-print(relative_entropy(original_out_vec, onDevice_out_vec).shape)
-
-
-
-
