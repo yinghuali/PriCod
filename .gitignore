@@ -176,3 +176,4 @@ feature_time.py
 *.pptx
 time_cost.py
 models/target_models/*
+models/onDevice_models/*
