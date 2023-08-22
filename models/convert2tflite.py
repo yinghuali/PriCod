@@ -3,11 +3,11 @@ import argparse
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--path_model", type=str)
-ap.add_argument("--path_save_tflite", type=str)
+ap.add_argument("--path_save", type=str)
 args = ap.parse_args()
 
 path_model = args.path_model
-path_save_tflite = args.path_save_tflite
+path_save = args.path_save
 
 
 def get_tflite(path_model, path_save):
@@ -20,7 +20,7 @@ def get_tflite(path_model, path_save):
 
 
 def main():
-    get_tflite(path_model, path_save_tflite)
+    get_tflite(path_model, path_save)
 
 
 if __name__ == '__main__':

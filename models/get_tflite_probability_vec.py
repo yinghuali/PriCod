@@ -4,18 +4,18 @@ import pickle
 import argparse
 
 ap = argparse.ArgumentParser()
-ap.add_argument("--path_tflite", type=str)
+ap.add_argument("--path_model", type=str)
 ap.add_argument("--path_x", type=str)
 ap.add_argument("--path_save", type=str)
 args = ap.parse_args()
 
-path_tflite = args.path_tflite
+path_model = args.path_model
 path_x = args.path_x
 path_save = args.path_save
 
 
 def get_tflite_probability_vec(x):
-    interpreter = tf.lite.Interpreter(model_path=path_tflite)
+    interpreter = tf.lite.Interpreter(model_path=path_model)
     interpreter.allocate_tensors()
     input_details = interpreter.get_input_details()
     output_details = interpreter.get_output_details()
