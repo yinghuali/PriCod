@@ -180,4 +180,5 @@ models/onDevice_models/*
 models/onDevice_out_vec/*
 models/original_out_vec/*
 models/embedding_vec/*
+results/*
 

@@ -37,6 +37,7 @@ def main():
         with torch.no_grad():
             output = model(input.float())
         vector = output.cpu().squeeze().numpy()
+        print(vector.shape)
         x_embedding.append(vector)
         print('======', i)
     x_embedding = np.array(x_embedding)
