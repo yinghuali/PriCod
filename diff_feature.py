@@ -1,23 +1,6 @@
 import numpy as np
-import pickle
-import os
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
 from scipy.stats import spearmanr
 from scipy.stats import wasserstein_distance
-
-
-path_original_out_vec = './models/original_out_vec/cifa10_vgg_20_orginal_vec.pkl'
-path_onDevice_out_vec = './models/onDevice_out_vec/cifa10_vgg_20_tflite_vec.pkl'
-path_y = './data/cifar10_y.pkl'
-
-original_out_vec = pickle.load(open(path_original_out_vec, 'rb'))
-onDevice_out_vec = pickle.load(open(path_onDevice_out_vec, 'rb'))
-y = pickle.load(open(path_y, 'rb'))
-y = np.array([i[0] for i in y])
-
-original_pre_y = original_out_vec.argmax(axis=1)
-onDevice_pre_y = onDevice_out_vec.argmax(axis=1)
 
 
 def get_kill_feature(original_out_vec, onDevice_out_vec):
@@ -243,4 +226,30 @@ def relative_entropy(original_out_vec, onDevice_out_vec):
         relative_entropy_feature.append(distance)
     relative_entropy_feature = np.array(relative_entropy_feature)
     return relative_entropy_feature
+
+
+def get_all_feature(original_out_vec, onDevice_out_vec):
+    all_distance_feature = [
+        get_kill_feature(original_out_vec, onDevice_out_vec),
+        get_confidence_diff_feature(original_out_vec, onDevice_out_vec),
+        euclidean_distance(original_out_vec, onDevice_out_vec),
+        cosine_similarity(original_out_vec, onDevice_out_vec),
+        manhattan_distance(original_out_vec, onDevice_out_vec),
+        mse_distance(original_out_vec, onDevice_out_vec),
+        mad_distance(original_out_vec, onDevice_out_vec),
+        relative_entropy(original_out_vec, onDevice_out_vec),
+        pearson_correlation_coefficient(original_out_vec, onDevice_out_vec),
+
+        # chebyshev_distance(original_out_vec, onDevice_out_vec),
+        #spearman_rank_correlation_coefficient(original_out_vec, onDevice_out_vec), # 时间较长
+        # sum_squared_differences(original_out_vec, onDevice_out_vec),
+        # kullback_leibler_divergence(original_out_vec, onDevice_out_vec),
+        # bhattacharyya_distance(original_out_vec, onDevice_out_vec),
+        # hellinger_distance(original_out_vec, onDevice_out_vec),
+        # wasserstein(original_out_vec, onDevice_out_vec),
+
+    ]
+    all_distance_feature = np.array(all_distance_feature)
+    all_distance_feature = all_distance_feature.T
+    return all_distance_feature
 
