@@ -21,7 +21,7 @@ path_embedding_vec = args.path_embedding_vec
 path_y = args.path_y
 path_save_res = args.path_save_res
 
-# python main.py --path_original_out_vec './models/original_out_vec/cifa10_vgg_20_orginal_vec.pkl' --path_onDevice_out_vec './models/onDevice_out_vec/cifa10_vgg_20_tflite_vec.pkl' --path_embedding_vec './models/embedding_vec/cifar10_embedding.pkl' --path_y './data/cifar10_y.pkl' --path_save_res './results/original/cifa10_vgg_20.pkl'
+# python main.py --path_original_out_vec './models/original_out_vec/cifa10_vgg_20_orginal_vec.pkl' --path_onDevice_out_vec './models/onDevice_out_vec/cifa10_vgg_20_tflite_vec.pkl' --path_embedding_vec './models/embedding_vec/cifar10_embedding.pkl' --path_y './data/cifar10_y.pkl' --path_save_res './results/original/cifa10_vgg_20.json'
 
 # path_original_out_vec = './models/original_out_vec/cifa10_vgg_20_orginal_vec.pkl'
 # path_onDevice_out_vec = './models/onDevice_out_vec/cifa10_vgg_20_tflite_vec.pkl'
@@ -84,3 +84,6 @@ def main():
     print('entropy_apfd', entropy_apfd)
     print('model_apfd', model_apfd)
 
+
+if __name__ == '__main__':
+    main()
