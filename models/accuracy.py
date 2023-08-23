@@ -3,7 +3,7 @@ import pickle
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 
-path_pre_vec = './onDevice_out_vec/cifa10_vgg_20_coreml_vec.pkl'
+path_pre_vec = './onDevice_out_vec/cifa10_alexnet_35_tflite_vec.pkl'
 path_y = '../data/cifar10_y.pkl'
 pre_vec = pickle.load(open(path_pre_vec, 'rb'))
 y = pickle.load(open(path_y, 'rb'))
