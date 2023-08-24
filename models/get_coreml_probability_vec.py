@@ -23,6 +23,8 @@ def get_coreml_probability_vec(x):
         input_data = np.expand_dims(x[i], axis=0)
         if model_name=='vgg':
             predict = list(model.predict({'conv2d_input': input_data})['Identity'][0])
+        if model_name=='lenet1':
+            predict = list(model.predict({'conv2d_input': input_data})['Identity'][0])
         All_out_probability_vec.append(predict)
     All_out_probability_vec = np.array(All_out_probability_vec)
 
