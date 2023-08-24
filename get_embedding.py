@@ -17,11 +17,16 @@ cuda = args.cuda
 device = torch.device(cuda if torch.cuda.is_available() else "cpu")
 
 # python get_embedding.py --path_x './data/cifar10_x.pkl' --save_embedding './models/embedding_vec/cifar10_embedding.pkl' --cuda 'cuda:0'
+# python get_embedding.py --path_x './data/fashionMnist_x.pkl' --save_embedding './models/embedding_vec/fmnist_embedding.pkl' --cuda 'cuda:0'
+
 
 def main():
     x = pickle.load(open(path_x, 'rb'))
     x = x.astype('float32')
     x /= 255.0
+    if x.shape[-1]==1:
+        x = np.repeat(x, repeats=3, axis=3)
+
     x = np.transpose(x, (0, 3, 1, 2))
     model = models.resnet50(pretrained=True)
     model = torch.nn.Sequential(*list(model.children())[:-1])

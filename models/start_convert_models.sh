@@ -4,3 +4,10 @@ python convert2coreml.py --path_model './original_models/cifa10_vgg_20.h5' --pat
 
 python convert2tflite.py --path_model './original_models/cifa10_alexnet_35.h5' --path_save './onDevice_models/cifa10_alexnet_35.tflite'
 python convert2coreml.py --path_model './original_models/cifa10_alexnet_35.h5' --path_save './onDevice_models/cifa10_alexnet_35.mlmodel'
+
+
+python convert2tflite.py --path_model './original_models/fmnist_lenet1_3.h5' --path_save './onDevice_models/fmnist_lenet1_3.tflite'
+python convert2coreml.py --path_model './original_models/fmnist_lenet1_3.h5' --path_save './onDevice_models/fmnist_lenet1_3.mlmodel'
+
+
+
