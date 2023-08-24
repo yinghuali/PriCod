@@ -6,14 +6,25 @@ from tensorflow.keras.datasets import cifar10, fashion_mnist
 
 
 def get_path_list(path_dir_compile):
-    model_path_list = []
+    path_list = []
     if os.path.isdir(path_dir_compile):
         for root, dirs, files in os.walk(path_dir_compile, topdown=True):
             for file in files:
                 file_absolute_path = os.path.join(root, file)
                 if file_absolute_path.endswith('.JPEG'):
-                    model_path_list.append(file_absolute_path)
-    return model_path_list
+                    path_list.append(file_absolute_path)
+    return path_list
+
+
+def get_plant_path_list(path_dir_compile):
+    path_list = []
+    if os.path.isdir(path_dir_compile):
+        for root, dirs, files in os.walk(path_dir_compile, topdown=True):
+            for file in files:
+                file_absolute_path = os.path.join(root, file)
+                if file_absolute_path.endswith('.JPG'):
+                    path_list.append(file_absolute_path)
+    return path_list
 
 
 def get_cifar10():
@@ -22,6 +33,18 @@ def get_cifar10():
     cifar10_y = np.vstack((y_train, y_test))
     pickle.dump(cifar10_x, open('./data/cifar10_x.pkl', 'wb'), protocol=4)
     pickle.dump(cifar10_y, open('./data/cifar10_y.pkl', 'wb'), protocol=4)
+
+
+def get_Fashion():
+    (x_train, y_train), (x_test, y_test) = fashion_mnist.load_data()
+    x_train = x_train.reshape((60000, 28, 28, 1))
+    x_test = x_test.reshape((10000, 28, 28, 1))
+    y_train = np.array([[i] for i in y_train])
+    y_test = np.array([[i] for i in y_test])
+    fashionMnist_x = np.vstack((x_train, x_test))
+    fashionMnist_y = np.vstack((y_train, y_test))
+    pickle.dump(fashionMnist_x, open('./data/fashionMnist_x.pkl', 'wb'), protocol=4)
+    pickle.dump(fashionMnist_y, open('./data/fashionMnist_y.pkl', 'wb'), protocol=4)
 
 
 def get_imagenet(path_data_dir):
@@ -43,22 +66,38 @@ def get_imagenet(path_data_dir):
     pickle.dump(label_np, open('./data/imagenet_y.pkl', 'wb'), protocol=4)
 
 
-def get_Fashion():
-    (x_train, y_train), (x_test, y_test) = fashion_mnist.load_data()
-    x_train = x_train.reshape((60000, 28, 28, 1))
-    x_test = x_test.reshape((10000, 28, 28, 1))
-    y_train = np.array([[i] for i in y_train])
-    y_test = np.array([[i] for i in y_test])
-    fashionMnist_x = np.vstack((x_train, x_test))
-    fashionMnist_y = np.vstack((y_train, y_test))
-    pickle.dump(fashionMnist_x, open('./data/fashionMnist_x.pkl', 'wb'), protocol=4)
-    pickle.dump(fashionMnist_y, open('./data/fashionMnist_y.pkl', 'wb'), protocol=4)
+def get_Plant(path_dir):
+    path_list = get_plant_path_list(path_dir)
+    big_class_list = [i.split('/')[-2].split('___')[0] for i in path_list]
+    label_list = [i.split('/')[-2] for i in path_list]
 
+    label_set = list(set(label_list))
+    dic = dict(zip(label_set, range(len(label_set))))
+    label_np = np.array([[dic[i]] for i in label_list])
+
+    big_class_set = list(set(big_class_list))
+    dic_big = dict(zip(big_class_set, range(len(big_class_set))))
+    big_label_np = np.array([[dic_big[i]] for i in big_class_list])
+
+    img_np = []
+    for i in path_list:
+        image = cv2.imread(i)
+        image = cv2.resize(image, (32, 32))
+        img_np.append(image)
+    img_np = np.array(img_np)
+    img_np = img_np.astype(np.int8)
+    print(img_np.shape)
+    print(label_np.shape)
+
+    pickle.dump(img_np, open('./data/plant_x.pkl', 'wb'), protocol=4)
+    pickle.dump(label_np, open('./data/plant_y.pkl', 'wb'), protocol=4)
+    pickle.dump(big_label_np, open('./data/plant_y_big.pkl', 'wb'), protocol=4)
 
 def main():
-    get_cifar10()
-    get_imagenet('./data/imagenet/tiny-imagenet-200/train/')
-    get_Fashion()
+    # get_cifar10()
+    # get_imagenet('./data/imagenet/tiny-imagenet-200/train/')
+    # get_Fashion()
+    get_Plant('/Users/yinghua.li/Downloads/Plant_leave_diseases_dataset_without_augmentation')
 
 
 if __name__ == '__main__':
