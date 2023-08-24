@@ -43,7 +43,7 @@ def get_imagenet(path_data_dir):
     pickle.dump(label_np, open('./data/imagenet_y.pkl', 'wb'), protocol=4)
 
 
-def get_fashionMNIST():
+def get_Fashion():
     (x_train, y_train), (x_test, y_test) = fashion_mnist.load_data()
     x_train = x_train.reshape((60000, 28, 28, 1))
     x_test = x_test.reshape((10000, 28, 28, 1))
@@ -58,7 +58,7 @@ def get_fashionMNIST():
 def main():
     get_cifar10()
     get_imagenet('./data/imagenet/tiny-imagenet-200/train/')
-    get_fashionMNIST()
+    get_Fashion()
 
 
 if __name__ == '__main__':
