@@ -9,5 +9,6 @@ python convert2coreml.py --path_model './original_models/cifa10_alexnet_35.h5' -
 python convert2tflite.py --path_model './original_models/fmnist_lenet1_3.h5' --path_save './onDevice_models/fmnist_lenet1_3.tflite'
 python convert2coreml.py --path_model './original_models/fmnist_lenet1_3.h5' --path_save './onDevice_models/fmnist_lenet1_3.mlmodel'
 
-
+python convert2tflite.py --path_model './original_models/fmnist_lenet5_3.h5' --path_save './onDevice_models/fmnist_lenet5_3.tflite'
+python convert2coreml.py --path_model './original_models/fmnist_lenet5_3.h5' --path_save './onDevice_models/fmnist_lenet5_3.mlmodel'
 
