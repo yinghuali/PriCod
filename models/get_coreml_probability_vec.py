@@ -27,8 +27,10 @@ def get_coreml_probability_vec(x):
             predict = list(model.predict({'conv2d_input': input_data})['Identity'][0])
         if model_name=='lenet5':
             predict = list(model.predict({'conv2d_input': input_data})['Identity'][0])
-        if model_name=='resnet':
+        if model_name=='nin':
             predict = list(model.predict({'input_1': input_data})['Identity'][0])
+        if model_name=='vgg19':
+            predict = list(model.predict({'conv2d_input': input_data})['Identity'][0])
         All_out_probability_vec.append(predict)
     All_out_probability_vec = np.array(All_out_probability_vec)
 

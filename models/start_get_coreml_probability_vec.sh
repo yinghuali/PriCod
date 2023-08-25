@@ -7,5 +7,6 @@ python get_coreml_probability_vec.py --path_model './onDevice_models/fmnist_lene
 python get_coreml_probability_vec.py --path_model './onDevice_models/fmnist_lenet5_3.mlmodel' --model_name 'lenet5' --path_x '../data/fashionMnist_x.pkl' --path_save './onDevice_out_vec/fashionMnist_lenet5_3_coreml_vec.pkl'
 
 
-python get_coreml_probability_vec.py --path_model './onDevice_models/plant_nin_6.mlmodel' --model_name 'resnet' --path_x '../data/plant_x.pkl' --path_save './onDevice_out_vec/plant_nin_6_coreml_vec.pkl'
+python get_coreml_probability_vec.py --path_model './onDevice_models/plant_nin_6.mlmodel' --model_name 'nin' --path_x '../data/plant_x.pkl' --path_save './onDevice_out_vec/plant_nin_6_coreml_vec.pkl'
+python get_coreml_probability_vec.py --path_model './onDevice_models/plant_vgg19_20.mlmodel' --model_name 'vgg19' --path_x '../data/plant_x.pkl' --path_save './onDevice_out_vec/plant_vgg19_20_coreml_vec.pkl'
 
