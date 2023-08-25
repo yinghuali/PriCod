@@ -183,4 +183,7 @@ models/embedding_vec/*
 results/*
 noisedata/*
 results_pfd/*
+models/original_noise_out_vec/*
+models/onDevice_noise_out_vec_tflite/*
+models/onDevice_noise_out_vec_coreml/*
 

@@ -2,7 +2,7 @@ import pickle
 import argparse
 import os
 from tensorflow.keras.models import load_model
-os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+os.environ["CUDA_VISIBLE_DEVICES"] = "3"
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--path_model", type=str)
