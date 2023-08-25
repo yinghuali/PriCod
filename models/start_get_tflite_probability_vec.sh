@@ -13,4 +13,4 @@ python get_tflite_probability_vec.py --path_model './onDevice_models/cifa10_alex
 python get_tflite_probability_vec.py --path_model './onDevice_models/fmnist_lenet1_3.tflite' --path_x '../data/fashionMnist_x.pkl' --path_save './onDevice_out_vec/fashionMnist_lenet1_3_tflite_vec.pkl'
 python get_tflite_probability_vec.py --path_model './onDevice_models/fmnist_lenet5_3.tflite' --path_x '../data/fashionMnist_x.pkl' --path_save './onDevice_out_vec/fashionMnist_lenet5_3_tflite_vec.pkl'
 
-python get_tflite_probability_vec.py --path_model './onDevice_models/plant_densenet_12.tflite' --path_x '../data/plant_x.pkl' --path_save './onDevice_out_vec/plant_densenet_12_tflite_vec.pkl'
+python get_tflite_probability_vec.py --path_model './onDevice_models/plant_nin_6.tflite' --path_x '../data/plant_x.pkl' --path_save './onDevice_out_vec/plant_nin_6_tflite_vec.pkl'

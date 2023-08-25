@@ -12,6 +12,6 @@ python convert2coreml.py --path_model './original_models/fmnist_lenet1_3.h5' --p
 python convert2tflite.py --path_model './original_models/fmnist_lenet5_3.h5' --path_save './onDevice_models/fmnist_lenet5_3.tflite'
 python convert2coreml.py --path_model './original_models/fmnist_lenet5_3.h5' --path_save './onDevice_models/fmnist_lenet5_3.mlmodel'
 
-python convert2tflite.py --path_model './original_models/plant_densenet_12.h5' --path_save './onDevice_models/plant_densenet_12.tflite'
-python convert2coreml.py --path_model './original_models/plant_densenet_12.h5' --path_save './onDevice_models/plant_densenet_12.mlmodel'
+python convert2tflite.py --path_model './original_models/plant_nin_6.h5' --path_save './onDevice_models/plant_nin_6.tflite'
+python convert2coreml.py --path_model './original_models/plant_nin_6.h5' --path_save './onDevice_models/plant_nin_6.mlmodel'
 

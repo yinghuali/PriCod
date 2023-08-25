@@ -3,8 +3,8 @@ import pickle
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 
-path_pre_vec = './onDevice_out_vec/plant_densenet_12_tflite_vec.pkl'
-path_pre_vec = './original_out_vec/plant_densenet_20_orginal_vec.pkl'
+path_pre_vec = './onDevice_out_vec/plant_nin_7_tflite_vec.pkl'
+path_pre_vec = './original_out_vec/plant_nin_6_orginal_vec.pkl'
 path_y = '../data/plant_y.pkl'
 pre_vec = pickle.load(open(path_pre_vec, 'rb'))
 y = pickle.load(open(path_y, 'rb'))
