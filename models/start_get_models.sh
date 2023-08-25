@@ -6,5 +6,5 @@ python lenet1.py --path_x '../data/fashionMnist_x.pkl' --path_y '../data/fashion
 python lenet5.py --path_x '../data/fashionMnist_x.pkl' --path_y '../data/fashionMnist_y.pkl' --num_classes 10 --epochs 3 --batch_size 64 --path_save './original_models/fmnist_lenet5_3.h5'
 
 
-python resnet.py --path_x '../data/plant_x.pkl' --path_y '../data/plant_y.pkl' --num_classes 38 --epochs 5 --batch_size 64 --path_save './original_models/plant_resnet_5.h5'
+python nin.py --path_x '../data/plant_x.pkl' --path_y '../data/plant_y.pkl' --num_classes 38 --epochs 7 --batch_size 64 --path_save './original_models/plant_nin_7.h5'
 

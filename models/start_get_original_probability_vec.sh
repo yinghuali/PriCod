@@ -13,4 +13,4 @@ python get_original_probability_vec.py --path_model './original_models/cifa10_al
 python get_original_probability_vec.py --path_model './original_models/fmnist_lenet1_3.h5' --path_x '../data/fashionMnist_x.pkl' --path_save './original_out_vec/fashionMnist_lenet1_3_orginal_vec.pkl'
 python get_original_probability_vec.py --path_model './original_models/fmnist_lenet5_3.h5' --path_x '../data/fashionMnist_x.pkl' --path_save './original_out_vec/fashionMnist_lenet5_3_orginal_vec.pkl'
 
-
+python get_original_probability_vec.py --path_model './original_models/plant_nin_7.h5' --path_x '../data/plant_x.pkl' --path_save './original_out_vec/plant_nin_7_orginal_vec.pkl'

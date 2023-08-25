@@ -18,6 +18,7 @@ device = torch.device(cuda if torch.cuda.is_available() else "cpu")
 
 # python get_embedding.py --path_x './data/cifar10_x.pkl' --save_embedding './models/embedding_vec/cifar10_embedding.pkl' --cuda 'cuda:0'
 # python get_embedding.py --path_x './data/fashionMnist_x.pkl' --save_embedding './models/embedding_vec/fmnist_embedding.pkl' --cuda 'cuda:0'
+# python get_embedding.py --path_x './data/plant_x.pkl' --save_embedding './models/embedding_vec/plant_embedding.pkl' --cuda 'cuda:0'
 
 
 def main():

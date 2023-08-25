@@ -19,3 +19,5 @@ python main.py --path_original_out_vec './models/original_out_vec/fashionMnist_l
 python main.py --path_original_out_vec './models/original_out_vec/fashionMnist_lenet5_3_orginal_vec.pkl' --path_onDevice_out_vec './models/onDevice_out_vec/fashionMnist_lenet5_3_tflite_vec.pkl' --path_embedding_vec './models/embedding_vec/fmnist_embedding.pkl' --path_y './data/fashionMnist_y.pkl' --path_save_res './results/original/fmnist_lenet5_3_tflite.json'
 python main.py --path_original_out_vec './models/original_out_vec/fashionMnist_lenet5_3_orginal_vec.pkl' --path_onDevice_out_vec './models/onDevice_out_vec/fashionMnist_lenet5_3_coreml_vec.pkl' --path_embedding_vec './models/embedding_vec/fmnist_embedding.pkl' --path_y './data/fashionMnist_y.pkl' --path_save_res './results/original/fmnist_lenet5_3_coreml.json'
 
+python main.py --path_original_out_vec './models/original_out_vec/plant_densenet_12_orginal_vec.pkl' --path_onDevice_out_vec './models/onDevice_out_vec/plant_densenet_12_tflite_vec.pkl' --path_embedding_vec './models/embedding_vec/plant_embedding.pkl' --path_y './data/plant_y.pkl' --path_save_res './results/original/plant_densenet_12_tflite.json'
+
