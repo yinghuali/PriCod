@@ -31,7 +31,7 @@ batch_size = args.batch_size
 path_save = args.path_save
 
 
-def vgg(x_train, num_classes):
+def vgg19(x_train, num_classes):
     model = Sequential()
 
     model.add(Conv2D(64, (3, 3), padding='same', input_shape=x_train.shape[1:]))
@@ -145,7 +145,7 @@ def main():
     y_train = tf.keras.utils.to_categorical(y_train, num_classes)
     y_test = tf.keras.utils.to_categorical(y_test, num_classes)
 
-    model = vgg(x_train, num_classes=num_classes)
+    model = vgg19(x_train, num_classes=num_classes)
     model.fit(x_train, y_train, batch_size=batch_size, epochs=epochs, validation_data=(x_test, y_test), shuffle=True)
 
     scores = model.evaluate(x_test, y_test, verbose=0)

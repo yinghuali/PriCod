@@ -22,3 +22,8 @@ python main.py --path_original_out_vec './models/original_out_vec/fashionMnist_l
 python main.py --path_original_out_vec './models/original_out_vec/plant_nin_6_orginal_vec.pkl' --path_onDevice_out_vec './models/onDevice_out_vec/plant_nin_6_tflite_vec.pkl' --path_embedding_vec './models/embedding_vec/plant_embedding.pkl' --path_y './data/plant_y.pkl' --path_save_res './results/original/plant_nin_6_tflite.json'
 python main.py --path_original_out_vec './models/original_out_vec/plant_nin_6_orginal_vec.pkl' --path_onDevice_out_vec './models/onDevice_out_vec/plant_nin_6_coreml_vec.pkl' --path_embedding_vec './models/embedding_vec/plant_embedding.pkl' --path_y './data/plant_y.pkl' --path_save_res './results/original/plant_nin_6_coreml.json'
 
+python main.py --path_original_out_vec './models/original_out_vec/plant_vgg19_20_orginal_vec.pkl' --path_onDevice_out_vec './models/onDevice_out_vec/plant_vgg19_20_tflite_vec.pkl' --path_embedding_vec './models/embedding_vec/plant_embedding.pkl' --path_y './data/plant_y.pkl' --path_save_res './results/original/plant_vgg19_20_tflite.json'
+
+
+
+

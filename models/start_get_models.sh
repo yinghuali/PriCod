@@ -7,4 +7,5 @@ python lenet5.py --path_x '../data/fashionMnist_x.pkl' --path_y '../data/fashion
 
 
 python nin.py --path_x '../data/plant_x.pkl' --path_y '../data/plant_y.pkl' --num_classes 38 --epochs 7 --batch_size 64 --path_save './original_models/plant_nin_7.h5'
+python vgg19.py --path_x '../data/plant_x.pkl' --path_y '../data/plant_y.pkl' --num_classes 38 --epochs 20 --batch_size 64 --path_save './original_models/plant_vgg19_20.h5'
 

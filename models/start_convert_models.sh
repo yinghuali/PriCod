@@ -15,3 +15,8 @@ python convert2coreml.py --path_model './original_models/fmnist_lenet5_3.h5' --p
 python convert2tflite.py --path_model './original_models/plant_nin_6.h5' --path_save './onDevice_models/plant_nin_6.tflite'
 python convert2coreml.py --path_model './original_models/plant_nin_6.h5' --path_save './onDevice_models/plant_nin_6.mlmodel'
 
+
+python convert2tflite.py --path_model './original_models/plant_vgg19_20.h5' --path_save './onDevice_models/plant_vgg19_20.tflite'
+python convert2coreml.py --path_model './original_models/plant_vgg19_20.h5' --path_save './onDevice_models/plant_vgg19_20.mlmodel'
+
+
