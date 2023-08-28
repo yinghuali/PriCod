@@ -12,8 +12,6 @@ from tensorflow.keras.layers import Conv2D, MaxPooling2D
 from tensorflow.keras.optimizers import SGD
 from sklearn.model_selection import train_test_split
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "0"
-
 ap = argparse.ArgumentParser()
 ap.add_argument("--path_x", type=str)
 ap.add_argument("--path_y", type=str)
@@ -21,6 +19,7 @@ ap.add_argument("--num_classes", type=int)
 ap.add_argument("--epochs", type=int)
 ap.add_argument("--batch_size", type=int)
 ap.add_argument("--path_save", type=str)
+ap.add_argument("--gpu", type=str)
 args = ap.parse_args()
 
 path_x = args.path_x
@@ -29,13 +28,16 @@ num_classes = args.num_classes
 epochs = args.epochs
 batch_size = args.batch_size
 path_save = args.path_save
+gpu = args.gpu
 
-# python get_adv_data.py --path_x './data/cifar10_x.pkl' --path_y './data/cifar10_y.pkl' --num_classes 10 --epochs 80 --batch_size 64 --path_save './advdata/cifar10/'
+os.environ["CUDA_VISIBLE_DEVICES"] = gpu
+
+# python get_adv_data.py --path_x './data/cifar10_x.pkl' --path_y './data/cifar10_y.pkl' --num_classes 10 --epochs 80 --batch_size 64 --path_save './advdata/cifar10/' --gpu '0'
+# nohup python get_adv_data.py --path_x './data/cifar10_x.pkl' --path_y './data/cifar10_y.pkl' --num_classes 10 --epochs 80 --batch_size 64 --path_save './advdata/cifar10/' --gpu '3' > /dev/null 2>&1 &
+# nohup python get_adv_data.py --path_x './data/fashionMnist_x.pkl' --path_y './data/fashionMnist_y.pkl' --num_classes 10 --epochs 60 --batch_size 64 --path_save './advdata/fashionMnist/' --gpu '0' > /dev/null 2>&1 &
 
 
-
-
-def cnn():
+def cnn(x_train):
 
     model = Sequential()
     model.add(Conv2D(32, (3, 3), padding='same',
@@ -129,7 +131,6 @@ def smm_x_adv(classifier, x): # 一般慢
 
 
 if __name__ == '__main__':
-    model = cnn()
     x = pickle.load(open(path_x, 'rb'))
     y = pickle.load(open(path_y, 'rb'))
     x = x.astype('float32')
@@ -138,6 +139,7 @@ if __name__ == '__main__':
     x_test /= 255.0
     y_train = tf.keras.utils.to_categorical(y_train, num_classes)
     y_test = tf.keras.utils.to_categorical(y_test, num_classes)
+    model = cnn(x_train)
 
     classifier = get_train_model(model, x_train, y_train, batch_size, epochs, 'cnn.h5')
     fsgm_x_adv(classifier, x)
