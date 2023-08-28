@@ -1,4 +1,5 @@
 import pickle
+import numpy as np
 import argparse
 import os
 from tensorflow.keras.models import load_model
@@ -18,7 +19,8 @@ path_save = args.path_save
 def main():
     x = pickle.load(open(path_x, 'rb'))
     x = x.astype('float32')
-    x /= 255.0
+    if np.max(x) > 5:
+        x /= 255.0
     original_model = load_model(path_model)
     ori_probabilities = original_model.predict(x)
     pickle.dump(ori_probabilities, open(path_save, 'wb'), protocol=4)

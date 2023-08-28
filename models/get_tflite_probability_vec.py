@@ -36,7 +36,8 @@ def get_tflite_probability_vec(x):
 def main():
     x = pickle.load(open(path_x, 'rb'))
     x = x.astype('float32')
-    x /= 255.0
+    if np.max(x) > 5:
+        x /= 255.0
     All_out_probability_vec = get_tflite_probability_vec(x)
     pickle.dump(All_out_probability_vec, open(path_save, 'wb'), protocol=4)
 
