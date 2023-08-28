@@ -95,13 +95,6 @@ def patch_x_adv(classifier, x):
     pickle.dump(x_adv, output)
 
 
-def gda_x_adv(classifier, x, y):   # 一般慢
-    attack = GeoDA(estimator=classifier)
-    x_adv = attack.generate(x=x, y=y)
-    output = open(path_save+'gda_x_adv.pkl', 'wb')
-    pickle.dump(x_adv, output)
-
-
 def bim_x_adv(classifier, x): # 一般慢
     attack = BasicIterativeMethod(estimator=classifier)
     x_adv = attack.generate(x=x)
@@ -142,9 +135,8 @@ if __name__ == '__main__':
     model = cnn(x_train)
 
     classifier = get_train_model(model, x_train, y_train, batch_size, epochs, 'cnn.h5')
-    fsgm_x_adv(classifier, x)
-    patch_x_adv(classifier, x)
-    gda_x_adv(classifier, x, y)
+    # fsgm_x_adv(classifier, x)
+    # patch_x_adv(classifier, x)
     bim_x_adv(classifier, x)
     pgd_x_adv(classifier, x)
     newf_x_adv(classifier, x)
