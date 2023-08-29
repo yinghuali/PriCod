@@ -247,12 +247,12 @@ def get_all_feature(original_out_vec, onDevice_out_vec):
         relative_entropy(original_out_vec, onDevice_out_vec),
         pearson_correlation_coefficient(original_out_vec, onDevice_out_vec),
 
-        # chebyshev_distance(original_out_vec, onDevice_out_vec),
-        # sum_squared_differences(original_out_vec, onDevice_out_vec),
-        # kullback_leibler_divergence(original_out_vec, onDevice_out_vec),
-        # bhattacharyya_distance(original_out_vec, onDevice_out_vec),
-        # hellinger_distance(original_out_vec, onDevice_out_vec),
-        # wasserstein(original_out_vec, onDevice_out_vec),
+        chebyshev_distance(original_out_vec, onDevice_out_vec),
+        sum_squared_differences(original_out_vec, onDevice_out_vec),
+        kullback_leibler_divergence(original_out_vec, onDevice_out_vec),
+        bhattacharyya_distance(original_out_vec, onDevice_out_vec),
+        hellinger_distance(original_out_vec, onDevice_out_vec),
+        wasserstein(original_out_vec, onDevice_out_vec),
 
         # spearman_rank_correlation_coefficient(original_out_vec, onDevice_out_vec), # 时间较长
 
@@ -261,7 +261,7 @@ def get_all_feature(original_out_vec, onDevice_out_vec):
     all_distance_feature = np.array(all_distance_feature)
     all_distance_feature = all_distance_feature.T
 
-    all_distance_feature = np.hstack((all_distance_feature, diff_vec))
+    all_distance_feature = np.hstack((all_distance_feature, diff_vec, onDevice_out_vec))
 
     return all_distance_feature
 
