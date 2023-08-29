@@ -3,7 +3,7 @@ import numpy as np
 import argparse
 import os
 from tensorflow.keras.models import load_model
-os.environ["CUDA_VISIBLE_DEVICES"] = "2"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--path_model", type=str)

@@ -3,9 +3,8 @@ import pickle
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 
-path_pre_vec = './onDevice_out_vec/plant_nin_7_tflite_vec.pkl'
-path_pre_vec = './original_out_vec/plant_vgg19_20_orginal_vec.pkl'
-path_y = '../data/plant_y.pkl'
+path_pre_vec = './onDevice_adv_out_vec_tflite/fmnist_lenet1_3_pgd_x_adv.pkl'
+path_y = '../data/fashionMnist_y.pkl'
 pre_vec = pickle.load(open(path_pre_vec, 'rb'))
 y = pickle.load(open(path_y, 'rb'))
 pre_vec_train, pre_vec_test, y_train, y_test = train_test_split(pre_vec, y, test_size=0.3, random_state=0)
