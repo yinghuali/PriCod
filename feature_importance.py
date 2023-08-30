@@ -5,6 +5,7 @@ from diff_feature import get_all_feature
 from sklearn.model_selection import train_test_split
 from get_rank_idx import *
 from xgboost import XGBClassifier
+from sklearn.decomposition import PCA
 ap = argparse.ArgumentParser()
 
 ap.add_argument("--path_original_out_vec", type=str)
@@ -35,7 +36,11 @@ def main():
     onDevice_pre_y = onDevice_out_vec.argmax(axis=1)
 
     distance_feature = get_all_feature(original_out_vec, onDevice_out_vec)
-    concat_all_feature = np.hstack((distance_feature, embedding_vec))
+    n_diff = len(distance_feature[0])
+    pca = PCA(n_components=n_diff)
+    new_embedding_vec = pca.fit_transform(embedding_vec)
+
+    concat_all_feature = np.hstack((distance_feature, new_embedding_vec))
 
     target_train_pre, target_test_pre, train_y, test_y = train_test_split(onDevice_pre_y, y, test_size=0.3, random_state=0)
     concat_train_all_feature, concat_test_all_feature, _, _ = train_test_split(concat_all_feature, y, test_size=0.3, random_state=0)

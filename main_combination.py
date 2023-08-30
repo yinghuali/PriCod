@@ -72,7 +72,7 @@ def main():
     n_diff = len(distance_feature[0])
 
     pca = PCA(n_components=n_diff)
-    new_embedding_vec = pca.fit_transform(distance_feature)
+    new_embedding_vec = pca.fit_transform(embedding_vec)
 
     PowerTransformer_feature = get_embedding_PowerTransformer(distance_feature, embedding_vec)
     QuantileTransformer_feature = get_QuantileTransformer(distance_feature, embedding_vec)
