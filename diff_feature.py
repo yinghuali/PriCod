@@ -75,7 +75,7 @@ def manhattan_distance(original_out_vec, onDevice_out_vec):
 
 def chebyshev_distance(original_out_vec, onDevice_out_vec):
     """
-    Chebyshev Distanc
+    Chebyshev Distance
     """
     chebyshev_distance_feature = []
     for i in range(len(original_out_vec)):
