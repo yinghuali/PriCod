@@ -101,21 +101,6 @@ def pearson_correlation_coefficient(original_out_vec, onDevice_out_vec):
     return pearson_correlation_coefficient_feature
 
 
-# 时间较长
-def spearman_rank_correlation_coefficient(original_out_vec, onDevice_out_vec):
-    """
-    Spearman's Rank Correlation Coefficient
-    """
-    spearman_rank_correlation_coefficient_feature = []
-    for i in range(len(original_out_vec)):
-        vector1 = original_out_vec[i]
-        vector2 = onDevice_out_vec[i]
-        distance, _ = spearmanr(vector1, vector2)
-        spearman_rank_correlation_coefficient_feature.append(distance)
-    spearman_rank_correlation_coefficient_feature = np.array(spearman_rank_correlation_coefficient_feature)
-    return spearman_rank_correlation_coefficient_feature
-
-
 def sum_squared_differences(original_out_vec, onDevice_out_vec):
     """
     Sum of Squared Differences
