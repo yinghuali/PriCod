@@ -6,7 +6,6 @@ from get_rank_idx import *
 from lightgbm import LGBMClassifier
 from sklearn.decomposition import PCA
 from sklearn.model_selection import train_test_split
-from sklearn import preprocessing
 
 ap = argparse.ArgumentParser()
 
@@ -49,20 +48,6 @@ def get_cross_fusion(x1, x2):
     return x
 
 
-def get_embedding_PowerTransformer(x1, x2):
-    x = np.hstack((x1, x2))
-    pt = preprocessing.PowerTransformer(method="yeo-johnson")
-    x = pt.fit_transform(x)
-    return x
-
-
-def get_QuantileTransformer(x1, x2):
-    x = np.hstack((x1, x2))
-    quantile_transformer = preprocessing.QuantileTransformer(random_state=0)
-    x = quantile_transformer.fit_transform(x)
-    return x
-
-
 def main():
     y = pickle.load(open(path_y, 'rb'))
     y = np.array([i[0] for i in y])
@@ -74,8 +59,6 @@ def main():
     pca = PCA(n_components=n_diff)
     new_embedding_vec = pca.fit_transform(embedding_vec)
 
-    PowerTransformer_feature = get_embedding_PowerTransformer(distance_feature, embedding_vec)
-    QuantileTransformer_feature = get_QuantileTransformer(distance_feature, embedding_vec)
     CrossFusion_feature = get_cross_fusion(distance_feature, new_embedding_vec)
     Multiplication_feature = get_multiplication(distance_feature, new_embedding_vec)
     Add_feaure = get_add(distance_feature, new_embedding_vec)
@@ -87,8 +70,7 @@ def main():
     Add_feature_train, Add_feature_test, _, _ = train_test_split(Add_feaure, y, test_size=0.3, random_state=0)
     Multiplication_feature_train, Multiplication_feature_test, _, _ = train_test_split(Multiplication_feature, y, test_size=0.3, random_state=0)
     CrossFusion_feature_train, CrossFusion_feature_test, _, _ = train_test_split(CrossFusion_feature, y, test_size=0.3, random_state=0)
-    QuantileTransformer_feature_train, QuantileTransformer_feature_test, _, _ = train_test_split(QuantileTransformer_feature, y, test_size=0.3, random_state=0)
-    PowerTransformer_feature_train, PowerTransformer_feature_test, _, _ = train_test_split(PowerTransformer_feature, y, test_size=0.3, random_state=0)
+
 
     dic = {}
     model = LGBMClassifier()
@@ -111,20 +93,6 @@ def main():
     rank_idx = y_concat_all.argsort()[::-1].copy()
     CrossFusion_apfd = apfd(idx_miss_test_list, rank_idx)
     dic['CrossFusion'] = CrossFusion_apfd
-
-    model = LGBMClassifier()
-    model.fit(QuantileTransformer_feature_train, miss_train_label)
-    y_concat_all = model.predict_proba(QuantileTransformer_feature_test)[:, 1]
-    rank_idx = y_concat_all.argsort()[::-1].copy()
-    QuantileTransformer_apfd = apfd(idx_miss_test_list, rank_idx)
-    dic['QuantileTransformer'] = QuantileTransformer_apfd
-
-    model = LGBMClassifier()
-    model.fit(PowerTransformer_feature_train, miss_train_label)
-    y_concat_all = model.predict_proba(PowerTransformer_feature_test)[:, 1]
-    rank_idx = y_concat_all.argsort()[::-1].copy()
-    PowerTransformer_apfd = apfd(idx_miss_test_list, rank_idx)
-    dic['PowerTransformer'] = PowerTransformer_apfd
 
     json.dump(dic, open(path_save_res, 'w'), sort_keys=False, indent=4)
 
