@@ -14,14 +14,11 @@ ap.add_argument("--path_y", type=str)
 ap.add_argument("--path_save_res", type=str)
 args = ap.parse_args()
 
-
 path_original_out_vec = args.path_original_out_vec
 path_onDevice_out_vec = args.path_onDevice_out_vec
 path_embedding_vec = args.path_embedding_vec
 path_y = args.path_y
 path_save_res = args.path_save_res
-
-# python main.py --path_original_out_vec './models/original_out_vec/cifa10_vgg_20_orginal_vec.pkl' --path_onDevice_out_vec './models/onDevice_out_vec/cifa10_vgg_20_tflite_vec.pkl' --path_embedding_vec './models/embedding_vec/cifar10_embedding.pkl' --path_y './data/cifar10_y.pkl' --path_save_res './results/original/cifa10_vgg_20_tflite.json'
 
 
 original_out_vec = pickle.load(open(path_original_out_vec, 'rb'))
