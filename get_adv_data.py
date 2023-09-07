@@ -82,7 +82,7 @@ def get_train_model(model, x_train, y_train, batch_size, nb_epochs, save_model_p
 
 
 def fsgm_x_adv(classifier, x):
-    attack = FastGradientMethod(estimator=classifier, eps=0.05)  # eps 值越大，攻击越大，一般eps=0.1
+    attack = FastGradientMethod(estimator=classifier, eps=0.05)
     x_adv = attack.generate(x=x)
     output = open(path_save+'fsgm_x_adv.pkl', 'wb')
     pickle.dump(x_adv, output)
@@ -95,31 +95,17 @@ def patch_x_adv(classifier, x):
     pickle.dump(x_adv, output)
 
 
-def bim_x_adv(classifier, x): # 一般慢
+def bim_x_adv(classifier, x):
     attack = BasicIterativeMethod(estimator=classifier)
     x_adv = attack.generate(x=x)
     output = open(path_save+'bim_x_adv.pkl', 'wb')
     pickle.dump(x_adv, output)
 
 
-def pgd_x_adv(classifier, x): #一般慢
+def pgd_x_adv(classifier, x):
     attack = ProjectedGradientDescent(estimator=classifier)
     x_adv = attack.generate(x=x)
     output = open(path_save+'pgd_x_adv.pkl', 'wb')
-    pickle.dump(x_adv, output)
-
-
-def newf_x_adv(classifier, x): # 一般慢
-    attack = NewtonFool(classifier=classifier)
-    x_adv = attack.generate(x=x)
-    output = open(path_save+'newf_x_adv.pkl', 'wb')
-    pickle.dump(x_adv, output)
-
-
-def smm_x_adv(classifier, x): # 一般慢
-    attack = SaliencyMapMethod(classifier=classifier)
-    x_adv = attack.generate(x=x)
-    output = open(path_save+'smm_x_adv.pkl', 'wb')
     pickle.dump(x_adv, output)
 
 
@@ -135,10 +121,9 @@ if __name__ == '__main__':
     model = cnn(x_train)
 
     classifier = get_train_model(model, x_train, y_train, batch_size, epochs, 'cnn.h5')
-    # fsgm_x_adv(classifier, x)
-    # patch_x_adv(classifier, x)
+    fsgm_x_adv(classifier, x)
+    patch_x_adv(classifier, x)
     bim_x_adv(classifier, x)
     pgd_x_adv(classifier, x)
-    newf_x_adv(classifier, x)
-    smm_x_adv(classifier, x)
+
 
