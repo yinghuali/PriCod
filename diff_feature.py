@@ -254,8 +254,6 @@ def get_all_feature(original_out_vec, onDevice_out_vec):
         hellinger_distance(original_out_vec, onDevice_out_vec),
         wasserstein(original_out_vec, onDevice_out_vec),
 
-        # spearman_rank_correlation_coefficient(original_out_vec, onDevice_out_vec), # 时间较长
-
     ]
 
     all_distance_feature = np.array(all_distance_feature)
