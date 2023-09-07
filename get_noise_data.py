@@ -140,12 +140,6 @@ def noise_salt_pepper(image, prob=0.01):
 
 
 def noise_gasuss(image, mean=0, var=0.001):
-    '''
-    添加高斯噪声
-    image:原始图像
-    mean : 均值
-    var : 方差,越大，噪声越大
-    '''
     image = np.array(image/255, dtype=float)
     noise = np.random.normal(mean, var ** 0.5, image.shape)
     out = image + noise

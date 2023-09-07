@@ -93,10 +93,11 @@ def get_Plant(path_dir):
     pickle.dump(label_np, open('./data/plant_y.pkl', 'wb'), protocol=4)
     pickle.dump(big_label_np, open('./data/plant_y_big.pkl', 'wb'), protocol=4)
 
+
 def main():
-    # get_cifar10()
-    # get_imagenet('./data/imagenet/tiny-imagenet-200/train/')
-    # get_Fashion()
+    get_cifar10()
+    get_imagenet('./data/imagenet/tiny-imagenet-200/train/')
+    get_Fashion()
     get_Plant('/Users/yinghua.li/Downloads/Plant_leave_diseases_dataset_without_augmentation')
 
 
