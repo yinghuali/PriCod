@@ -165,7 +165,7 @@ test/*
 Results.ipynb
 tables/*
 ResultAnalysis.ipynb
-Results.ipynb
+*.ipynb
 featureresult/*
 README.txt
 test.py
