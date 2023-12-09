@@ -11,4 +11,5 @@ python get_original_probability_vec.py --path_model './original_models/plant_vgg
 
 
 python get_lstm_original_probability_vec.py --path_model './original_models/twitter_lstm_2.h5' --path_x '../data/twitter_x.pkl' --path_save './original_out_vec/twitter_lstm_2_orginal_vec.pkl'
+python get_lstm_original_probability_vec.py --path_model './original_models/twitter_gru_2.h5' --path_x '../data/twitter_x.pkl' --path_save './original_out_vec/twitter_gru_2_orginal_vec.pkl'
 

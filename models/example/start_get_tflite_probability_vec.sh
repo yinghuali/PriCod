@@ -17,5 +17,6 @@ python get_tflite_probability_vec.py --path_model './onDevice_models/plant_nin_6
 python get_tflite_probability_vec.py --path_model './onDevice_models/plant_vgg19_20.tflite' --path_x '../data/plant_x.pkl' --path_save './onDevice_out_vec/plant_vgg19_20_tflite_vec.pkl'
 
 python get_lstm_probability_vec.py --path_model './onDevice_models/twitter_lstm_2.tflite' --path_x '../data/twitter_x.pkl' --path_save './onDevice_out_vec/twitter_lstm_2_tflite_vec.pkl'
+python get_lstm_probability_vec.py --path_model './onDevice_models/twitter_gru_2.tflite' --path_x '../data/twitter_x.pkl' --path_save './onDevice_out_vec/twitter_gru_2_tflite_vec.pkl'
 
 
