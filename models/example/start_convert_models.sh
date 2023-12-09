@@ -19,4 +19,5 @@ python convert2coreml.py --path_model './original_models/plant_nin_6.h5' --path_
 python convert2tflite.py --path_model './original_models/plant_vgg19_20.h5' --path_save './onDevice_models/plant_vgg19_20.tflite'
 python convert2coreml.py --path_model './original_models/plant_vgg19_20.h5' --path_save './onDevice_models/plant_vgg19_20.mlmodel'
 
-
+python convert2tflite.py --path_model './original_models/twitter_lstm_2.h5' --path_save './onDevice_models/twitter_lstm_2.tflite'
+python convert2coreml.py --path_model './original_models/twitter_lstm_2.h5' --path_save './onDevice_models/twitter_lstm_2.mlmodel'
