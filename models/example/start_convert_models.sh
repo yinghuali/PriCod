@@ -24,3 +24,5 @@ python convert2coreml.py --path_model './original_models/twitter_lstm_2.h5' --pa
 
 python convert2tflite.py --path_model './original_models/twitter_gru_2.h5' --path_save './onDevice_models/twitter_gru_2.tflite'
 python convert2coreml.py --path_model './original_models/twitter_gru_2.h5' --path_save './onDevice_models/twitter_gru_2.mlmodel'
+
+python convert2tflite.py --path_model './original_models/imagenet_inceptionv3.h5' --path_save './onDevice_models/imagenet_inceptionv3.tflite'
