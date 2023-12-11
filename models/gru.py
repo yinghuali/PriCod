@@ -18,8 +18,8 @@ path_save = './original_models/twitter_gru_2.h5'
 
 def gru():
     model = Sequential()
-    model.add(Embedding(10000, 128, input_length=100))
-    model.add(GRU(128, dropout=0.2, recurrent_dropout=0.2))
+    model.add(Embedding(10000, 64, input_length=100))
+    model.add(GRU(64, dropout=0.2, recurrent_dropout=0.2))
     model.add(Dense(num_classes, activation='softmax'))
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
     return model
