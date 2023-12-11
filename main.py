@@ -52,11 +52,17 @@ def main():
     entropy_rank_idx = Entropy_rank_idx(onDevice_out_vec_test)
     random_rank_idx = Random_rank_idx(onDevice_out_vec_test)
 
+    margin_rank_idx = Margin_rank_idx(onDevice_out_vec_test)
+    leastconfidence_rank_idx = LeastConfidence_rank_idx(onDevice_out_vec_test)
+
     random_apfd = apfd(idx_miss_test_list, random_rank_idx)
     deepGini_apfd = apfd(idx_miss_test_list, deepGini_rank_idx)
     vanillasoftmax_apfd = apfd(idx_miss_test_list, vanillasoftmax_rank_idx)
     pcs_apfd = apfd(idx_miss_test_list, pcs_rank_idx)
     entropy_apfd = apfd(idx_miss_test_list, entropy_rank_idx)
+
+    margin_apfd = apfd(idx_miss_test_list, margin_rank_idx)
+    leastconfidence_apfd = apfd(idx_miss_test_list, leastconfidence_rank_idx)
 
     dic = {
         'random_apfd': random_apfd,
@@ -64,17 +70,12 @@ def main():
         'vanillasoftmax_apfd': vanillasoftmax_apfd,
         'pcs_apfd': pcs_apfd,
         'entropy_apfd': entropy_apfd,
+        'margin_apfd': margin_apfd,
+        'leastconfidence_apfd': leastconfidence_apfd,
         'model_apfd': model_apfd,
     }
 
     json.dump(dic, open(path_save_res, 'w'), sort_keys=False, indent=4)
-
-    print('random_apfd', random_apfd)
-    print('deepGini_apfd', deepGini_apfd)
-    print('vanillasoftmax_apfd', vanillasoftmax_apfd)
-    print('pcs_apfd', pcs_apfd)
-    print('entropy_apfd', entropy_apfd)
-    print('model_apfd', model_apfd)
 
 
 if __name__ == '__main__':

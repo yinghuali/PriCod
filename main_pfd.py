@@ -62,6 +62,9 @@ def main():
     entropy_rank_idx = Entropy_rank_idx(onDevice_out_vec_test)
     random_rank_idx = Random_rank_idx(onDevice_out_vec_test)
 
+    margin_rank_idx = Margin_rank_idx(onDevice_out_vec_test)
+    leastconfidence_rank_idx = LeastConfidence_rank_idx(onDevice_out_vec_test)
+
     select_ratio_list = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
     idx_miss_list = get_idx_miss_class(target_test_pre, test_y)
     deepGini_pfd = get_res_ratio_list(idx_miss_list, deepGini_rank_idx, select_ratio_list)
@@ -71,23 +74,21 @@ def main():
     entropy_pfd = get_res_ratio_list(idx_miss_list, entropy_rank_idx, select_ratio_list)
     model_pfd = get_res_ratio_list(idx_miss_list, model_rank_idx, select_ratio_list)
 
+    margin_pfd = get_res_ratio_list(idx_miss_list, margin_rank_idx, select_ratio_list)
+    leastconfidence_pfd = get_res_ratio_list(idx_miss_list, leastconfidence_rank_idx, select_ratio_list)
+
     dic = {
         'random_pfd': random_pfd,
         'deepGini_pfd': deepGini_pfd,
         'vanillasoftmax_pfd': vanillasoftmax_pfd,
         'pcs_pfd': pcs_pfd,
         'entropy_pfd': entropy_pfd,
+        'margin_pfd': margin_pfd,
+        'leastconfidence_pfd': leastconfidence_pfd,
         'model_pfd': model_pfd,
     }
 
     json.dump(dic, open(path_save_res, 'w'), sort_keys=False, indent=4)
-
-    print('random_pfd', random_pfd)
-    print('deepGini_pfd', deepGini_pfd)
-    print('vanillasoftmax_pfd', vanillasoftmax_pfd)
-    print('pcs_pfd', pcs_pfd)
-    print('entropy_pfd', entropy_pfd)
-    print('model_pfd', model_pfd)
 
 
 if __name__ == '__main__':
