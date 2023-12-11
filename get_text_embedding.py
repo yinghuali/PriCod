@@ -5,8 +5,8 @@ import torch
 from transformers import BertTokenizer, BertModel
 
 
-path_train = '/Users/yinghua.li/Downloads/archive/twitter_training.csv'
-path_validation = '/Users/yinghua.li/Downloads/archive/twitter_validation.csv'
+path_train = '/home/yinghua/pycharm/PriCod/models/embedding_vec/twitter_training.csv'
+path_validation = '/home/yinghua/pycharm/PriCod/models/embedding_vec/twitter_validation.csv'
 
 model_name = "bert-base-uncased"
 tokenizer = BertTokenizer.from_pretrained(model_name)
