@@ -218,6 +218,11 @@ def diff_out_vec(original_out_vec, onDevice_out_vec):
     return diff_vec
 
 
+def coordinate_deviation(onDevice_out_vec):
+    diff_vec = np.zeros((len(onDevice_out_vec), len(onDevice_out_vec[0])))
+    return diff_vec
+
+
 def get_all_feature(original_out_vec, onDevice_out_vec):
     diff_vec = diff_out_vec(original_out_vec, onDevice_out_vec)
 
@@ -225,26 +230,30 @@ def get_all_feature(original_out_vec, onDevice_out_vec):
         get_kill_feature(original_out_vec, onDevice_out_vec),
         get_confidence_diff_feature(original_out_vec, onDevice_out_vec),
         euclidean_distance(original_out_vec, onDevice_out_vec),
-        cosine_similarity(original_out_vec, onDevice_out_vec),
         manhattan_distance(original_out_vec, onDevice_out_vec),
-        mse_distance(original_out_vec, onDevice_out_vec),
-        mad_distance(original_out_vec, onDevice_out_vec),
         relative_entropy(original_out_vec, onDevice_out_vec),
         pearson_correlation_coefficient(original_out_vec, onDevice_out_vec),
+        coordinate_deviation(onDevice_out_vec),
 
         chebyshev_distance(original_out_vec, onDevice_out_vec),
         sum_squared_differences(original_out_vec, onDevice_out_vec),
-        kullback_leibler_divergence(original_out_vec, onDevice_out_vec),
-        bhattacharyya_distance(original_out_vec, onDevice_out_vec),
         hellinger_distance(original_out_vec, onDevice_out_vec),
         wasserstein(original_out_vec, onDevice_out_vec),
+
+        # cosine_similarity(original_out_vec, onDevice_out_vec),
+        # mse_distance(original_out_vec, onDevice_out_vec),
+        # mad_distance(original_out_vec, onDevice_out_vec),
+        # kullback_leibler_divergence(original_out_vec, onDevice_out_vec),
+        # bhattacharyya_distance(original_out_vec, onDevice_out_vec),
+
+
 
     ]
 
     all_distance_feature = np.array(all_distance_feature)
     all_distance_feature = all_distance_feature.T
 
-    all_distance_feature = np.hstack((all_distance_feature, diff_vec, onDevice_out_vec))
+    all_distance_feature = np.hstack((all_distance_feature, diff_vec))
 
     return all_distance_feature
 
