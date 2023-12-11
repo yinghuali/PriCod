@@ -1,55 +1,29 @@
-import torch
-import torchvision.models as models
-import torchvision.transforms as transforms
-import pickle
 import numpy as np
-import argparse
+import pandas as pd
+import pickle
 
-ap = argparse.ArgumentParser()
-ap.add_argument("--path_x", type=str)
-ap.add_argument("--save_embedding", type=str)
-ap.add_argument("--cuda", type=str)
-args = ap.parse_args()
 
-path_x = args.path_x
-save_embedding = args.save_embedding
-cuda = args.cuda
-device = torch.device(cuda if torch.cuda.is_available() else "cpu")
-
-# python get_embedding.py --path_x './data/cifar10_x.pkl' --save_embedding './models/embedding_vec/cifar10_embedding.pkl' --cuda 'cuda:0'
-# python get_embedding.py --path_x './data/fashionMnist_x.pkl' --save_embedding './models/embedding_vec/fmnist_embedding.pkl' --cuda 'cuda:0'
-# python get_embedding.py --path_x './data/plant_x.pkl' --save_embedding './models/embedding_vec/plant_embedding.pkl' --cuda 'cuda:0'
+path_train = '/Users/yinghua.li/Downloads/archive/twitter_training.csv'
+path_validation = '/Users/yinghua.li/Downloads/archive/twitter_validation.csv'
 
 
 def main():
-    x = pickle.load(open(path_x, 'rb'))
-    x = x.astype('float32')
-    x /= 255.0
-    if x.shape[-1]==1:
-        x = np.repeat(x, repeats=3, axis=3)
+    df1 = pd.read_csv(path_train, names=['ID', 'entity', 'label', 'text'])
+    df2 = pd.read_csv(path_validation, names=['ID', 'entity', 'label', 'text'])
+    label_list = list(df1['label'])+list(df2['label'])
+    text_list = list(df1['text'])+list(df2['text'])
 
-    x = np.transpose(x, (0, 3, 1, 2))
-    model = models.resnet50(pretrained=True)
-    model = torch.nn.Sequential(*list(model.children())[:-1])
-    model = model.float()
-    model.to(device)
-    model.eval()
+    df = pd.DataFrame(columns=['text', 'label'])
+    df['text'] = text_list
+    df['label'] = label_list
+    df = df.dropna()
 
-    x_embedding = []
-    for i in range(len(x)):
-        input = np.array([x[i]])
-        input = torch.from_numpy(input)
-        input = input.to(device)
-        with torch.no_grad():
-            output = model(input.float())
-        vector = output.cpu().squeeze().numpy()
-        print(vector.shape)
-        x_embedding.append(vector)
-        print('======', i)
-    x_embedding = np.array(x_embedding)
-    pickle.dump(x_embedding, open(save_embedding, 'wb'), protocol=4)
+    texts = list(df['text'])
+    print(len(texts))
+
+
+    # pickle.dump(x, open('./models/embedding_vec/twitter_embedding.pkl', 'wb'), protocol=4)
 
 
 if __name__ == '__main__':
     main()
-
