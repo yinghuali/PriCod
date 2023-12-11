@@ -219,7 +219,8 @@ def diff_out_vec(original_out_vec, onDevice_out_vec):
 
 
 def coordinate_deviation(onDevice_out_vec):
-    diff_vec = np.zeros((len(onDevice_out_vec), len(onDevice_out_vec[0])))
+    coordinate_vec = np.zeros((len(onDevice_out_vec), len(onDevice_out_vec[0])))
+    diff_vec = onDevice_out_vec - coordinate_vec
     return diff_vec
 
 
