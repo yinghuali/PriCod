@@ -1,5 +1,6 @@
 import pickle
 import json
+import datetime
 import argparse
 from diff_feature import get_all_feature
 from sklearn.model_selection import train_test_split
@@ -31,7 +32,10 @@ def main():
     y = np.array([i[0] for i in y])
     onDevice_pre_y = onDevice_out_vec.argmax(axis=1)
 
+    print(datetime.datetime.now())
     distance_feature = get_all_feature(original_out_vec, onDevice_out_vec)
+    print(datetime.datetime.now())
+
     concat_all_feature = np.hstack((distance_feature, embedding_vec))
 
     target_train_pre, target_test_pre, train_y, test_y = train_test_split(onDevice_pre_y, y, test_size=0.3, random_state=0)
