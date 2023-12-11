@@ -11,7 +11,7 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 path_x = '../data/twitter_x.pkl'
 path_y = '../data/twitter_y.pkl'
 num_classes = 4
-epochs = 2
+epochs = 1
 batch_size = 128
 path_save = './original_models/twitter_lstm_2.h5'
 
