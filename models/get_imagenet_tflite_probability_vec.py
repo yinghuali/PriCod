@@ -8,10 +8,8 @@ from tensorflow.keras.applications.inception_v3 import decode_predictions
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 
-
 path_model = './onDevice_models/imagenet_inceptionv3.tflite'
 img_path = '/raid/yinghua/PriCod/data/imagenet/train/n04554684/n04554684_6202.JPEG'
-
 
 
 def get_tflite_probability_vec(x):
@@ -48,7 +46,6 @@ def main():
     img /= 255.0
     x = [img]
     All_out_probability_vec = get_tflite_probability_vec(x)
-
 
 
 if __name__ == '__main__':
