@@ -31,6 +31,7 @@ def main():
 
     model = InceptionV3(weights='imagenet')
     # model.save(path_save)
+    print(len(path_list))
 
     pre_list = []
     label_list = []
