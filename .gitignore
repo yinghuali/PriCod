@@ -195,3 +195,4 @@ onDevice_models/*
 prima/*
 old_results/*
 old_results_pfd/*
+models/accuracy_imagenet.py
