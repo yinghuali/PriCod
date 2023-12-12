@@ -4,48 +4,53 @@ import pickle
 import argparse
 import os
 from tensorflow.keras.preprocessing import image
-from tensorflow.keras.applications.inception_v3 import decode_predictions
+from tensorflow.keras.applications.inception_v3 import preprocess_input
+
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 
 path_model = './onDevice_models/imagenet_inceptionv3.tflite'
-img_path = '/raid/yinghua/PriCod/data/imagenet/train/n04554684/n04554684_6202.JPEG'
+data_path = '/raid/yinghua/PriCod/data'
+path_tflite_pre_save = '/raid/yinghua/PriCod/data/pkl_data/InceptionV3_pre_tflite.pkl'
 
 
-def get_tflite_probability_vec(x):
+def get_path(path_dir_compile):
+    path_list = []
+    if os.path.isdir(path_dir_compile):
+        for root, dirs, files in os.walk(path_dir_compile, topdown=True):
+            for file in files:
+                file_absolute_path = os.path.join(root, file)
+                if file_absolute_path.endswith('.JPEG'):
+                    path_list.append(file_absolute_path)
+    return path_list
+
+
+def main():
+    path_list = get_path(data_path)
+    path_list = sorted(path_list)
+
     interpreter = tf.lite.Interpreter(model_path=path_model)
     interpreter.allocate_tensors()
     input_details = interpreter.get_input_details()
     output_details = interpreter.get_output_details()
 
-    All_out_probability_vec = []
-    for i in range(len(x)):
-        input_data = np.expand_dims(x[i], axis=0)
-        interpreter.set_tensor(input_details[0]['index'], input_data)
+    pre_list = []
+    i = 0
+    for img_path in path_list:
+        img = image.load_img(img_path, target_size=(299, 299))
+        x = image.img_to_array(img)
+        x = np.expand_dims(x, axis=0)
+        x = preprocess_input(x)
+
+        interpreter.set_tensor(input_details[0]['index'], x)
         interpreter.invoke()
         output_data = interpreter.get_tensor(output_details[0]['index'])[0]
-        All_out_probability_vec.append(output_data)
-        print('==========', i)
-
-        preds_vec = np.array([output_data])
-        pre = decode_predictions(preds_vec, top=1)
-        y = pre[0][0][0]
-        probability = pre[0][0][2]
-        print(y)
-        print(probability)
-
-    All_out_probability_vec = np.array(All_out_probability_vec)
-
-    return All_out_probability_vec
-
-
-def main():
-    img = image.load_img(img_path, target_size=(299, 299))
-    img = np.array(img)
-    img = img.astype('float32')
-    img /= 255.0
-    x = [img]
-    All_out_probability_vec = get_tflite_probability_vec(x)
+        pre = list(output_data)
+        pre_list.append(pre)
+        print(i)
+        i += 1
+    pre_np = np.array(pre_list)
+    pickle.dump(pre_np, open(path_tflite_pre_save, 'wb'), protocol=4)
 
 
 if __name__ == '__main__':
