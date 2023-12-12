@@ -49,6 +49,7 @@ def main():
         pre_list.append(pre)
         print(i)
         i += 1
+
     pre_np = np.array(pre_list)
     pickle.dump(pre_np, open(path_tflite_pre_save, 'wb'), protocol=4)
 
