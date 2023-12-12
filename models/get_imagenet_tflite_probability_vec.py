@@ -14,6 +14,12 @@ data_path = '/raid/yinghua/PriCod/data'
 path_tflite_pre_save = '/raid/yinghua/PriCod/data/pkl_data/InceptionV3_pre_tflite.pkl'
 
 
+def write_result(content, file_name):
+    re = open(file_name, 'a')
+    re.write('\n' + content)
+    re.close()
+
+
 def get_path(path_dir_compile):
     path_list = []
     if os.path.isdir(path_dir_compile):
@@ -47,6 +53,7 @@ def main():
         output_data = interpreter.get_tensor(output_details[0]['index'])[0]
         pre = list(output_data)
         pre_list.append(pre)
+        write_result(str(i), 'tflite_pre.log')
         print(i)
         i += 1
 
