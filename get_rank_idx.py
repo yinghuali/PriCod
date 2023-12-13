@@ -46,3 +46,15 @@ def Entropy_rank_idx(x):
     entropy_res = entropy(prob_dist, axis=1)
     entropy_rank_idx = np.argsort(entropy_res)[::-1]
     return entropy_rank_idx
+
+
+def get_uncertainty_feature(x):
+    margin_score = np.sort(x)[:, -1] - np.sort(x)[:, -2]
+    gini_score = 1 - np.sum(np.power(x, 2), axis=1)
+    least_score = x.max(1)
+    VanillaSoftmax_score = 1 - x.max(1)
+    PCS_score = 1 - (np.sort(x)[:, -1] - np.sort(x)[:, -2])
+    entropy_score = entropy(np.array([i / np.sum(i) for i in x]), axis=1)
+
+    feature_vec = np.vstack((margin_score, gini_score, least_score, VanillaSoftmax_score, PCS_score, entropy_score))
+    return feature_vec.T

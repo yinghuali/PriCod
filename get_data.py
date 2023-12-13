@@ -2,7 +2,7 @@ import os
 import numpy as np
 import cv2
 import pickle
-from tensorflow.keras.datasets import cifar10, fashion_mnist
+from tensorflow.keras.datasets import cifar10, fashion_mnist, cifar100
 
 
 def get_path_list(path_dir_compile):
@@ -33,6 +33,14 @@ def get_cifar10():
     cifar10_y = np.vstack((y_train, y_test))
     pickle.dump(cifar10_x, open('./data/cifar10_x.pkl', 'wb'), protocol=4)
     pickle.dump(cifar10_y, open('./data/cifar10_y.pkl', 'wb'), protocol=4)
+
+
+def get_cifar100():
+    (x_train, y_train), (x_test, y_test) = cifar100.load_data()
+    cifar100_x = np.vstack((x_train, x_test))
+    cifar100_y = np.vstack((y_train, y_test))
+    pickle.dump(cifar100_x, open('./data/cifar100_x.pkl', 'wb'), protocol=4)
+    pickle.dump(cifar100_y, open('./data/cifar100_y.pkl', 'wb'), protocol=4)
 
 
 def get_Fashion():
@@ -95,10 +103,11 @@ def get_Plant(path_dir):
 
 
 def main():
-    get_cifar10()
-    get_imagenet('./data/imagenet/tiny-imagenet-200/train/')
-    get_Fashion()
-    get_Plant('/Users/yinghua.li/Downloads/Plant_leave_diseases_dataset_without_augmentation')
+    # get_cifar10()
+    # get_imagenet('/raid/yinghua/PriCod/data/tiny-imagenet-200/train/')
+    # get_Fashion()
+    # get_Plant('/Users/yinghua.li/Downloads/Plant_leave_diseases_dataset_without_augmentation')
+    get_cifar100()
 
 
 if __name__ == '__main__':
