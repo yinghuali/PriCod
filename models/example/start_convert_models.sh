@@ -27,3 +27,5 @@ python convert2coreml.py --path_model './original_models/twitter_gru_2.h5' --pat
 
 python convert2tflite.py --path_model './original_models/imagenet_inceptionv3.h5' --path_save './onDevice_models/imagenet_inceptionv3.tflite'
 python convert2coreml.py --path_model './original_models/imagenet_inceptionv3.h5' --path_save './onDevice_models/imagenet_inceptionv3.mlmodel'
+
+python convert2tflite.py --path_model './original_models/cifar100_ResNet152_1.h5' --path_save './onDevice_models/cifar100_ResNet152_1.tflite'
