@@ -226,7 +226,7 @@ def coordinate_deviation(onDevice_out_vec):
 
 def get_all_feature(original_out_vec, onDevice_out_vec):
     diff_vec = diff_out_vec(original_out_vec, onDevice_out_vec)
-    dic_coordinate = coordinate_deviation(onDevice_out_vec)
+    diff_coordinate = coordinate_deviation(onDevice_out_vec)
 
     all_distance_feature = [
         get_kill_feature(original_out_vec, onDevice_out_vec),
@@ -252,7 +252,7 @@ def get_all_feature(original_out_vec, onDevice_out_vec):
     all_distance_feature = np.array(all_distance_feature)
     all_distance_feature = all_distance_feature.T
 
-    all_distance_feature = np.hstack((all_distance_feature, diff_vec, dic_coordinate))
+    all_distance_feature = np.hstack((all_distance_feature, diff_vec, diff_coordinate))
 
     return all_distance_feature
 

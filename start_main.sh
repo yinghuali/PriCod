@@ -28,7 +28,9 @@
 #python main.py --path_original_out_vec './models/original_out_vec/news_lstm_4_orginal_vec.pkl' --path_onDevice_out_vec './models/onDevice_out_vec/news_lstm_4_coreml_vec.pkl' --path_embedding_vec './models/embedding_vec/news_embedding.pkl' --path_y './data/news_y.pkl' --path_save_res './results/original/news_lstm_4_coreml.json'
 
 
-python main.py --path_original_out_vec './models/original_out_vec/news_gru_4_orginal_vec.pkl' --path_onDevice_out_vec './models/onDevice_out_vec/news_gru_4_tflite_vec.pkl' --path_embedding_vec './models/embedding_vec/news_embedding.pkl' --path_y './data/news_y.pkl' --path_save_res './results/original/news_gru_4_tflite.json'
-python main.py --path_original_out_vec './models/original_out_vec/news_gru_4_orginal_vec.pkl' --path_onDevice_out_vec './models/onDevice_out_vec/news_gru_4_coreml_vec.pkl' --path_embedding_vec './models/embedding_vec/news_embedding.pkl' --path_y './data/news_y.pkl' --path_save_res './results/original/news_gru_4_coreml.json'
+#python main.py --path_original_out_vec './models/original_out_vec/news_gru_4_orginal_vec.pkl' --path_onDevice_out_vec './models/onDevice_out_vec/news_gru_4_tflite_vec.pkl' --path_embedding_vec './models/embedding_vec/news_embedding.pkl' --path_y './data/news_y.pkl' --path_save_res './results/original/news_gru_4_tflite.json'
+#python main.py --path_original_out_vec './models/original_out_vec/news_gru_4_orginal_vec.pkl' --path_onDevice_out_vec './models/onDevice_out_vec/news_gru_4_coreml_vec.pkl' --path_embedding_vec './models/embedding_vec/news_embedding.pkl' --path_y './data/news_y.pkl' --path_save_res './results/original/news_gru_4_coreml.json'
 
+
+python main.py --path_original_out_vec './models/original_out_vec/cifar100_ResNet152_1_orginal_vec.pkl' --path_onDevice_out_vec './models/onDevice_out_vec/cifar100_ResNet152_1_tflite_vec.pkl' --path_embedding_vec './models/embedding_vec/cifar100_embedding.pkl' --path_y './data/cifar100_y.pkl' --path_save_res './results/original/cifar100_ResNet152_1_tflite.json'
 
