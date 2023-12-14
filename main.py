@@ -44,7 +44,7 @@ def main():
 
     miss_train_label, miss_test_label, idx_miss_test_list = get_miss_lable(target_train_pre, target_test_pre, train_y, test_y)
 
-    model = LGBMClassifier()
+    model = LGBMClassifier(n_estimators=300)
     model.fit(concat_train_all_feature, miss_train_label)
     y_concat_all = model.predict_proba(concat_test_all_feature)[:, 1]
     rank_idx = y_concat_all.argsort()[::-1].copy()
