@@ -28,7 +28,7 @@ def get_tflite_probability_vec(x):
         output_data = interpreter.get_tensor(output_details[0]['index'])[0]
         All_out_probability_vec.append(output_data)
         print('==========', i)
-        print(output_data)
+        # print(output_data)
     All_out_probability_vec = np.array(All_out_probability_vec)
 
     return All_out_probability_vec

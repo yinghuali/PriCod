@@ -20,3 +20,6 @@ python get_lstm_probability_vec.py --path_model './onDevice_models/twitter_lstm_
 python get_lstm_probability_vec.py --path_model './onDevice_models/twitter_gru_2.tflite' --path_x '../data/twitter_x.pkl' --path_save './onDevice_out_vec/twitter_gru_2_tflite_vec.pkl'
 
 python get_tflite_probability_vec.py --path_model './onDevice_models/cifar100_ResNet152_1.tflite' --path_x '../data/cifar100_x.pkl' --path_save './onDevice_out_vec/cifar100_ResNet152_1_tflite_vec.pkl'
+
+python get_lstm_probability_vec.py --path_model './onDevice_models/news_lstm_4.tflite' --path_x '../data/news_x.pkl' --path_save './onDevice_out_vec/news_lstm_4_tflite_vec.pkl'
+

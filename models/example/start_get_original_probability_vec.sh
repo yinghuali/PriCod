@@ -15,3 +15,7 @@ python get_lstm_original_probability_vec.py --path_model './original_models/twit
 
 
 python get_original_probability_vec.py --path_model './original_models/cifar100_ResNet152_1.h5' --path_x '../data/cifar100_x.pkl' --path_save './original_out_vec/cifar100_ResNet152_1_orginal_vec.pkl'
+
+
+python get_lstm_original_probability_vec.py --path_model './original_models/news_lstm_4.h5' --path_x '../data/news_x.pkl' --path_save './original_out_vec/news_lstm_4_orginal_vec.pkl'
+
