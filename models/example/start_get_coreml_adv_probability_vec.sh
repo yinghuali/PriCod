@@ -21,3 +21,10 @@ python get_coreml_probability_vec.py --path_model './onDevice_models/fmnist_lene
 python get_coreml_probability_vec.py --path_model './onDevice_models/fmnist_lenet5_3.mlmodel' --model_name 'lenet5' --path_x '../advdata/fashionMnist/patch_x_adv.pkl' --path_save './onDevice_adv_out_vec_coreml/fmnist_lenet5_3_patch_x_adv.pkl'
 python get_coreml_probability_vec.py --path_model './onDevice_models/fmnist_lenet5_3.mlmodel' --model_name 'lenet5' --path_x '../advdata/fashionMnist/pgd_x_adv.pkl' --path_save './onDevice_adv_out_vec_coreml/fmnist_lenet5_3_pgd_x_adv.pkl'
 
+
+python get_coreml_probability_vec.py --path_model './onDevice_models/cifar100_DenseNet201_12.mlmodel' --model_name 'densenet' --path_x '../advdata/cifar100/bim_x_adv.pkl' --path_save './onDevice_adv_out_vec_tflite/cifar100_DenseNet201_12_bim_x_adv.pkl'
+python get_coreml_probability_vec.py --path_model './onDevice_models/cifar100_DenseNet201_12.mlmodel' --model_name 'densenet' --path_x '../advdata/cifar100/fsgm_x_adv.pkl' --path_save './onDevice_adv_out_vec_tflite/cifar100_DenseNet201_12_fsgm_x_adv.pkl'
+python get_coreml_probability_vec.py --path_model './onDevice_models/cifar100_DenseNet201_12.mlmodel' --model_name 'densenet' --path_x '../advdata/cifar100/patch_x_adv.pkl' --path_save './onDevice_adv_out_vec_tflite/cifar100_DenseNet201_12_patch_x_adv.pkl'
+python get_coreml_probability_vec.py --path_model './onDevice_models/cifar100_DenseNet201_12.mlmodel' --model_name 'densenet' --path_x '../advdata/cifar100/pgd_x_adv.pkl' --path_save './onDevice_adv_out_vec_tflite/cifar100_DenseNet201_12_pgd_x_adv.pkl'
+
+

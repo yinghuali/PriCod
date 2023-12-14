@@ -19,18 +19,18 @@ path_save = args.path_save
 #     open(path_save, "wb").write(tflite_quant_model)
 
 
-def get_tflite(path_model, path_save):
-    converter = tf.compat.v1.lite.TFLiteConverter.from_keras_model_file(model_file=path_model)
-    converter.post_training_quantize = True
-    tflite_model = converter.convert()
-    open(path_save, "wb").write(tflite_model)
-
-
 # def get_tflite(path_model, path_save):
-#     converter = tf.compat.v1.lite.TFLiteConverter.from_keras_model_file(model_file=path_model, input_shapes={'input_1': (1, 32, 32, 3)})
+#     converter = tf.compat.v1.lite.TFLiteConverter.from_keras_model_file(model_file=path_model)
 #     converter.post_training_quantize = True
 #     tflite_model = converter.convert()
 #     open(path_save, "wb").write(tflite_model)
+
+
+def get_tflite(path_model, path_save):
+    converter = tf.compat.v1.lite.TFLiteConverter.from_keras_model_file(model_file=path_model, input_shapes={'input_1': (1, 32, 32, 3)})
+    converter.post_training_quantize = True
+    tflite_model = converter.convert()
+    open(path_save, "wb").write(tflite_model)
 
 
 def main():

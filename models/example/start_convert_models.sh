@@ -36,3 +36,6 @@ python convert2coreml.py --path_model './original_models/news_gru_4.h5' --path_s
 
 python convert2tflite.py --path_model './original_models/cifar100_ResNet152_1.h5' --path_save './onDevice_models/cifar100_ResNet152_1.tflite'
 python convert2coreml.py --path_model './original_models/cifar100_ResNet152_1.h5' --path_save './onDevice_models/cifar100_ResNet152_1.mlmodel'
+
+python convert2tflite.py --path_model './original_models/cifar100_DenseNet201_12.h5' --path_save './onDevice_models/cifar100_DenseNet201_12.tflite'
+python convert2coreml.py --path_model './original_models/cifar100_DenseNet201_12.h5' --path_save './onDevice_models/cifar100_DenseNet201_12.mlmodel'

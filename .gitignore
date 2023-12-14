@@ -200,3 +200,4 @@ models/resnet152.py
 test1.py
 test2.py
 models/onDevice_models/cifar100*
+models/densenet201.py
