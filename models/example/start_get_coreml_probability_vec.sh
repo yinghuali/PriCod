@@ -12,3 +12,9 @@ python get_coreml_probability_vec.py --path_model './onDevice_models/plant_vgg19
 
 python get_lstm_coreml_probability_vec.py --path_model './onDevice_models/twitter_lstm_2.mlmodel' --model_name 'lstm' --path_x '../data/twitter_x.pkl' --path_save './onDevice_out_vec/twitter_lstm_2_coreml_vec.pkl'
 python get_lstm_coreml_probability_vec.py --path_model './onDevice_models/twitter_gru_2.mlmodel' --model_name 'lstm' --path_x '../data/twitter_x.pkl' --path_save './onDevice_out_vec/twitter_gru_2_coreml_vec.pkl'
+
+
+python get_lstm_coreml_probability_vec.py --path_model './onDevice_models/news_lstm_4.mlmodel' --model_name 'lstm' --path_x '../data/news_x.pkl' --path_save './onDevice_out_vec/news_lstm_4_coreml_vec.pkl'
+python get_lstm_coreml_probability_vec.py --path_model './onDevice_models/news_gru_4.mlmodel' --model_name 'lstm' --path_x '../data/news_x.pkl' --path_save './onDevice_out_vec/news_gru_4_coreml_vec.pkl'
+
+

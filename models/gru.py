@@ -11,7 +11,7 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 path_x = '../data/news_x.pkl'
 path_y = '../data/news_y.pkl'
 num_classes = 20
-epochs = 4
+epochs = 7
 batch_size = 128
 path_save = './original_models/news_gru_4.h5'
 

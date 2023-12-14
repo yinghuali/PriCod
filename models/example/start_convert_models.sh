@@ -31,5 +31,8 @@ python convert2coreml.py --path_model './original_models/imagenet_inceptionv3.h5
 python convert2tflite.py --path_model './original_models/cifar100_ResNet152_1.h5' --path_save './onDevice_models/cifar100_ResNet152_1.tflite'
 
 
-
 python convert2tflite.py --path_model './original_models/news_lstm_4.h5' --path_save './onDevice_models/news_lstm_4.tflite'
+python convert2coreml.py --path_model './original_models/news_lstm_4.h5' --path_save './onDevice_models/news_lstm_4.mlmodel'
+
+python convert2tflite.py --path_model './original_models/news_gru_4.h5' --path_save './onDevice_models/news_gru_4.tflite'
+python convert2coreml.py --path_model './original_models/news_gru_4.h5' --path_save './onDevice_models/news_gru_4.mlmodel'
