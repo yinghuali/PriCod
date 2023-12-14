@@ -8,12 +8,12 @@ from sklearn.model_selection import train_test_split
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
-path_x = '../data/twitter_x.pkl'
-path_y = '../data/twitter_y.pkl'
-num_classes = 4
-epochs = 1
+path_x = '../data/news_x.pkl'
+path_y = '../data/news_y.pkl'
+num_classes = 20
+epochs = 10
 batch_size = 128
-path_save = './original_models/twitter_lstm_2.h5'
+path_save = './original_models/news_lstm_2.h5'
 
 
 def lstm():
@@ -25,8 +25,8 @@ def lstm():
     return model
 
 
-def get_one_hot(y):
-    one_hot_labels = np.zeros((len(y), 4))
+def get_one_hot(y, num_classes):
+    one_hot_labels = np.zeros((len(y), num_classes))
     for i, label in enumerate(y):
         one_hot_labels[i, label] = 1
     return one_hot_labels
@@ -35,7 +35,7 @@ def get_one_hot(y):
 def main():
     x = pickle.load(open(path_x, 'rb'))
     y = pickle.load(open(path_y, 'rb'))
-    y = get_one_hot(y)
+    y = get_one_hot(y, num_classes)
 
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_state=0)
 
@@ -44,7 +44,7 @@ def main():
 
     scores = model.evaluate(x_test, y_test, verbose=0)
     print("Accuracy: %.2f%%" % (scores[1] * 100))
-    model.save(path_save)
+    # model.save(path_save)
 
 
 if __name__ == '__main__':
