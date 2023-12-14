@@ -11,9 +11,9 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 path_x = '../data/news_x.pkl'
 path_y = '../data/news_y.pkl'
 num_classes = 20
-epochs = 10
+epochs = 4
 batch_size = 128
-path_save = './original_models/news_lstm_2.h5'
+path_save = './original_models/news_lstm_4.h5'
 
 
 def lstm():
@@ -44,7 +44,7 @@ def main():
 
     scores = model.evaluate(x_test, y_test, verbose=0)
     print("Accuracy: %.2f%%" % (scores[1] * 100))
-    # model.save(path_save)
+    model.save(path_save)
 
 
 if __name__ == '__main__':
