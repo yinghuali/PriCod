@@ -192,7 +192,6 @@ models/original_adv_out_vec/*
 compare_original.py
 models/accuracy_test.py
 onDevice_models/*
-prima/*
 old_results/*
 old_results_pfd/*
 models/accuracy_imagenet.py
@@ -200,3 +199,4 @@ main_imagenet.py
 models/resnet152.py
 test1.py
 test2.py
+models/onDevice_models/cifar100*
