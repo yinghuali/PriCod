@@ -198,3 +198,5 @@ old_results_pfd/*
 models/accuracy_imagenet.py
 main_imagenet.py
 models/resnet152.py
+test1.py
+test2.py

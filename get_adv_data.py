@@ -35,6 +35,7 @@ os.environ["CUDA_VISIBLE_DEVICES"] = gpu
 # python get_adv_data.py --path_x './data/cifar10_x.pkl' --path_y './data/cifar10_y.pkl' --num_classes 10 --epochs 80 --batch_size 64 --path_save './advdata/cifar10/' --gpu '0'
 # nohup python get_adv_data.py --path_x './data/cifar10_x.pkl' --path_y './data/cifar10_y.pkl' --num_classes 10 --epochs 80 --batch_size 64 --path_save './advdata/cifar10/' --gpu '3' > /dev/null 2>&1 &
 # nohup python get_adv_data.py --path_x './data/fashionMnist_x.pkl' --path_y './data/fashionMnist_y.pkl' --num_classes 10 --epochs 60 --batch_size 64 --path_save './advdata/fashionMnist/' --gpu '0' > /dev/null 2>&1 &
+# nohup python get_adv_data.py --path_x './data/cifar100_x.pkl' --path_y './data/cifar100_y.pkl' --num_classes 100 --epochs 80 --batch_size 64 --path_save './advdata/cifar100/' --gpu '1' > /dev/null 2>&1 &
 
 
 def cnn(x_train):
