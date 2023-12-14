@@ -10,11 +10,10 @@ python get_coreml_probability_vec.py --path_model './onDevice_models/fmnist_lene
 python get_coreml_probability_vec.py --path_model './onDevice_models/plant_nin_6.mlmodel' --model_name 'nin' --path_x '../data/plant_x.pkl' --path_save './onDevice_out_vec/plant_nin_6_coreml_vec.pkl'
 python get_coreml_probability_vec.py --path_model './onDevice_models/plant_vgg19_20.mlmodel' --model_name 'vgg19' --path_x '../data/plant_x.pkl' --path_save './onDevice_out_vec/plant_vgg19_20_coreml_vec.pkl'
 
-python get_lstm_coreml_probability_vec.py --path_model './onDevice_models/twitter_lstm_2.mlmodel' --model_name 'lstm' --path_x '../data/twitter_x.pkl' --path_save './onDevice_out_vec/twitter_lstm_2_coreml_vec.pkl'
-python get_lstm_coreml_probability_vec.py --path_model './onDevice_models/twitter_gru_2.mlmodel' --model_name 'lstm' --path_x '../data/twitter_x.pkl' --path_save './onDevice_out_vec/twitter_gru_2_coreml_vec.pkl'
-
 
 python get_lstm_coreml_probability_vec.py --path_model './onDevice_models/news_lstm_4.mlmodel' --model_name 'lstm' --path_x '../data/news_x.pkl' --path_save './onDevice_out_vec/news_lstm_4_coreml_vec.pkl'
 python get_lstm_coreml_probability_vec.py --path_model './onDevice_models/news_gru_4.mlmodel' --model_name 'lstm' --path_x '../data/news_x.pkl' --path_save './onDevice_out_vec/news_gru_4_coreml_vec.pkl'
 
+
+python get_coreml_probability_vec.py --path_model './onDevice_models/cifar100_ResNet152_1.mlmodel' --model_name 'resnet' --path_x '../data/cifar100_x.pkl' --path_save './onDevice_out_vec/cifar100_ResNet152_1_coreml_vec.pkl'
 
