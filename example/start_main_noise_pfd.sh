@@ -1,4 +1,11 @@
-
+#!/bin/bash -l
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --time=1-23:00:00
+#SBATCH --mail-type=end,fail
+#SBATCH --mail-user=yinghua.li@uni.lu
+#SBATCH -p batch
+#SBATCH --mem 10G
 
 # cifar10
 python main_pfd.py --path_original_out_vec './models/original_noise_out_vec/cifa10_vgg_20_augmentation_width_shift_x.pkl' --path_onDevice_out_vec './models/onDevice_noise_out_vec_tflite/cifa10_vgg_20_augmentation_width_shift_x.pkl' --path_embedding_vec './models/embedding_vec/cifar10_embedding.pkl' --path_y './data/cifar10_y.pkl' --path_save_res './results_pfd/noise/cifa10_vgg_20_augmentation_width_shift_tflite.json'
