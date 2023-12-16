@@ -163,7 +163,7 @@ mutation_models/
 data/*
 test/*
 Results.ipynb
-tables/*
+old_tables/*
 ResultAnalysis.ipynb
 *.ipynb
 featureresult/*
@@ -201,3 +201,6 @@ test1.py
 test2.py
 models/onDevice_models/cifar100*
 models/densenet201.py
+old_tables/*
+tables/*
+
