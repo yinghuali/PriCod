@@ -68,3 +68,4 @@ python get_noise_data.py  --select_method 'fog' --save_path_pkl './noisedata/cif
 python get_noise_data.py  --select_method 'contrast' --save_path_pkl './noisedata/cifar100/contrast_x.pkl' --img_np_path './data/cifar100_x.pkl'
 
 
+

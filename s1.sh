@@ -1,3 +1,11 @@
+#!/bin/bash -l
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --time=1-23:00:00
+#SBATCH --mail-type=end,fail
+#SBATCH --mail-user=yinghua.li@uni.lu
+#SBATCH -p batch
+#SBATCH --mem 10G
 
 python ablation_study.py --path_original_out_vec './models/original_out_vec/cifa10_vgg_20_orginal_vec.pkl' --path_onDevice_out_vec './models/onDevice_out_vec/cifa10_vgg_20_tflite_vec.pkl' --path_embedding_vec './models/embedding_vec/cifar10_embedding.pkl' --path_y './data/cifar10_y.pkl' --path_save_res './results/ablation/cifa10_vgg_20_tflite.json'
 python ablation_study.py --path_original_out_vec './models/original_out_vec/cifa10_vgg_20_orginal_vec.pkl' --path_onDevice_out_vec './models/onDevice_out_vec/cifa10_vgg_20_coreml_vec.pkl' --path_embedding_vec './models/embedding_vec/cifar10_embedding.pkl' --path_y './data/cifar10_y.pkl' --path_save_res './results/ablation/cifa10_vgg_20_coreml.json'
@@ -16,12 +24,3 @@ python ablation_study.py --path_original_out_vec './models/original_out_vec/plan
 
 python ablation_study.py --path_original_out_vec './models/original_out_vec/plant_vgg19_20_orginal_vec.pkl' --path_onDevice_out_vec './models/onDevice_out_vec/plant_vgg19_20_tflite_vec.pkl' --path_embedding_vec './models/embedding_vec/plant_embedding.pkl' --path_y './data/plant_y.pkl' --path_save_res './results/ablation/plant_vgg19_20_tflite.json'
 python ablation_study.py --path_original_out_vec './models/original_out_vec/plant_vgg19_20_orginal_vec.pkl' --path_onDevice_out_vec './models/onDevice_out_vec/plant_vgg19_20_coreml_vec.pkl' --path_embedding_vec './models/embedding_vec/plant_embedding.pkl' --path_y './data/plant_y.pkl' --path_save_res './results/ablation/plant_vgg19_20_coreml.json'
-
-
-python ablation_study.py --path_original_out_vec './models/original_out_vec/cifar100_ResNet152_1_orginal_vec.pkl' --path_onDevice_out_vec './models/onDevice_out_vec/cifar100_ResNet152_1_tflite_vec.pkl' --path_embedding_vec './models/embedding_vec/cifar100_embedding.pkl' --path_y './data/cifar100_y.pkl' --path_save_res './results/ablation/cifar100_ResNet152_1_tflite.json'
-python ablation_study.py --path_original_out_vec './models/original_out_vec/cifar100_ResNet152_1_orginal_vec.pkl' --path_onDevice_out_vec './models/onDevice_out_vec/cifar100_ResNet152_1_coreml_vec.pkl' --path_embedding_vec './models/embedding_vec/cifar100_embedding.pkl' --path_y './data/cifar100_y.pkl' --path_save_res './results/ablation/cifar100_ResNet152_1_coreml.json'
-
-python ablation_study.py --path_original_out_vec './models/original_out_vec/cifar100_DenseNet201_12_orginal_vec.pkl' --path_onDevice_out_vec './models/onDevice_out_vec/cifar100_DenseNet201_12_tflite_vec.pkl' --path_embedding_vec './models/embedding_vec/cifar100_embedding.pkl' --path_y './data/cifar100_y.pkl' --path_save_res './results/ablation/cifar100_DenseNet201_12_tflite.json'
-python ablation_study.py --path_original_out_vec './models/original_out_vec/cifar100_DenseNet201_12_orginal_vec.pkl' --path_onDevice_out_vec './models/onDevice_out_vec/cifar100_DenseNet201_12_coreml_vec.pkl' --path_embedding_vec './models/embedding_vec/cifar100_embedding.pkl' --path_y './data/cifar100_y.pkl' --path_save_res './results/ablation/cifar100_DenseNet201_12_coreml.json'
-
-
