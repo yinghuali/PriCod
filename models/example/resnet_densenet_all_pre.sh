@@ -1,7 +1,6 @@
 
 
-#python get_coreml_probability_vec.py --path_model './onDevice_models/cifar100_ResNet152_1.mlmodel' --model_name 'resnet' --path_x '../data/cifar100_x.pkl' --path_save './onDevice_out_vec/cifar100_ResNet152_1_coreml_vec.pkl'
-
+python get_coreml_probability_vec.py --path_model './onDevice_models/cifar100_ResNet152_1.mlmodel' --model_name 'resnet' --path_x '../data/cifar100_x.pkl' --path_save './onDevice_out_vec/cifar100_ResNet152_1_coreml_vec.pkl'
 python get_coreml_probability_vec.py --path_model './onDevice_models/cifar100_ResNet152_1.mlmodel' --model_name 'resnet' --path_x '../noisedata/cifar100/augmentation_width_shift_x.pkl' --path_save './onDevice_noise_out_vec_tflite/cifar100_ResNet152_1_augmentation_width_shift_x.pkl'
 python get_coreml_probability_vec.py --path_model './onDevice_models/cifar100_ResNet152_1.mlmodel' --model_name 'resnet' --path_x '../noisedata/cifar100/augmentation_height_shift_x.pkl' --path_save './onDevice_noise_out_vec_tflite/cifar100_ResNet152_1_augmentation_height_shift_x.pkl'
 python get_coreml_probability_vec.py --path_model './onDevice_models/cifar100_ResNet152_1.mlmodel' --model_name 'resnet' --path_x '../noisedata/cifar100/augmentation_horizontal_flip_x.pkl' --path_save './onDevice_noise_out_vec_tflite/cifar100_ResNet152_1_augmentation_horizontal_flip_x.pkl'
@@ -25,7 +24,6 @@ python get_coreml_probability_vec.py --path_model './onDevice_models/cifar100_Re
 
 ######
 python get_coreml_probability_vec.py --path_model './onDevice_models/cifar100_DenseNet201_12.mlmodel' --model_name 'densenet' --path_x '../data/cifar100_x.pkl' --path_save './onDevice_out_vec/cifar100_DenseNet201_12_coreml_vec.pkl'
-
 python get_coreml_probability_vec.py --path_model './onDevice_models/cifar100_DenseNet201_12.mlmodel' --model_name 'densenet' --path_x '../noisedata/cifar100/augmentation_width_shift_x.pkl' --path_save './onDevice_noise_out_vec_tflite/cifar100_DenseNet201_12_augmentation_width_shift_x.pkl'
 python get_coreml_probability_vec.py --path_model './onDevice_models/cifar100_DenseNet201_12.mlmodel' --model_name 'densenet' --path_x '../noisedata/cifar100/augmentation_height_shift_x.pkl' --path_save './onDevice_noise_out_vec_tflite/cifar100_DenseNet201_12_augmentation_height_shift_x.pkl'
 python get_coreml_probability_vec.py --path_model './onDevice_models/cifar100_DenseNet201_12.mlmodel' --model_name 'densenet' --path_x '../noisedata/cifar100/augmentation_horizontal_flip_x.pkl' --path_save './onDevice_noise_out_vec_tflite/cifar100_DenseNet201_12_augmentation_horizontal_flip_x.pkl'

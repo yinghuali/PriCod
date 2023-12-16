@@ -21,3 +21,15 @@ python get_original_probability_vec.py --path_model './original_models/fmnist_le
 python get_original_probability_vec.py --path_model './original_models/fmnist_lenet5_3.h5' --path_x '../advdata/fashionMnist/fsgm_x_adv.pkl' --path_save './original_adv_out_vec/fmnist_lenet5_3_fsgm_x_adv.pkl'
 python get_original_probability_vec.py --path_model './original_models/fmnist_lenet5_3.h5' --path_x '../advdata/fashionMnist/patch_x_adv.pkl' --path_save './original_adv_out_vec/fmnist_lenet5_3_patch_x_adv.pkl'
 python get_original_probability_vec.py --path_model './original_models/fmnist_lenet5_3.h5' --path_x '../advdata/fashionMnist/pgd_x_adv.pkl' --path_save './original_adv_out_vec/fmnist_lenet5_3_pgd_x_adv.pkl'
+
+
+
+python get_original_probability_vec.py --path_model './original_models/cifar100_ResNet152_1.h5' --path_x '../advdata/cifar100/bim_x_adv.pkl' --path_save './original_adv_out_vec/cifar100_ResNet152_1_bim_x_adv.pkl'
+python get_original_probability_vec.py --path_model './original_models/cifar100_ResNet152_1.h5' --path_x '../advdata/cifar100/fsgm_x_adv.pkl' --path_save './original_adv_out_vec/cifar100_ResNet152_1_fsgm_x_adv.pkl'
+python get_original_probability_vec.py --path_model './original_models/cifar100_ResNet152_1.h5' --path_x '../advdata/cifar100/patch_x_adv.pkl' --path_save './original_adv_out_vec/cifar100_ResNet152_1_patch_x_adv.pkl'
+python get_original_probability_vec.py --path_model './original_models/cifar100_ResNet152_1.h5' --path_x '../advdata/cifar100/pgd_x_adv.pkl' --path_save './original_adv_out_vec/cifar100_ResNet152_1_pgd_x_adv.pkl'
+
+python get_original_probability_vec.py --path_model './original_models/cifar100_DenseNet201_12.h5' --path_x '../advdata/cifar100/bim_x_adv.pkl' --path_save './original_adv_out_vec/cifar100_DenseNet201_12_bim_x_adv.pkl'
+python get_original_probability_vec.py --path_model './original_models/cifar100_DenseNet201_12.h5' --path_x '../advdata/cifar100/fsgm_x_adv.pkl' --path_save './original_adv_out_vec/cifar100_DenseNet201_12_fsgm_x_adv.pkl'
+python get_original_probability_vec.py --path_model './original_models/cifar100_DenseNet201_12.h5' --path_x '../advdata/cifar100/patch_x_adv.pkl' --path_save './original_adv_out_vec/cifar100_DenseNet201_12_patch_x_adv.pkl'
+python get_original_probability_vec.py --path_model './original_models/cifar100_DenseNet201_12.h5' --path_x '../advdata/cifar100/pgd_x_adv.pkl' --path_save './original_adv_out_vec/cifar100_DenseNet201_12_pgd_x_adv.pkl'
