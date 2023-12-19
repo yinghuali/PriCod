@@ -30,9 +30,13 @@ embedding_vec = pickle.load(open(path_embedding_vec, 'rb'))
 
 
 def main():
-
     y = pickle.load(open(path_y, 'rb'))
-    y = np.array([i[0] for i in y])
+    if y.shape == (y.size, ):
+        y = y
+    else:
+        y = np.array([i[0] for i in y])
+
+
     onDevice_pre_y = onDevice_out_vec.argmax(axis=1)
 
     distance_feature = get_all_feature(original_out_vec, onDevice_out_vec)
