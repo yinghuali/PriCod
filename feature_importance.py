@@ -31,12 +31,16 @@ def main():
     embedding_vec = pickle.load(open(path_embedding_vec, 'rb'))
 
     y = pickle.load(open(path_y, 'rb'))
-    y = np.array([i[0] for i in y])
+    if y.shape == (y.size, ):
+        y = y
+    else:
+        y = np.array([i[0] for i in y])
+
     onDevice_pre_y = onDevice_out_vec.argmax(axis=1)
 
     distance_feature = get_all_feature(original_out_vec, onDevice_out_vec)
-    # pca = PCA(n_components=100)
-    pca = PCA(n_components=300) # vgg16
+    pca = PCA(n_components=100)
+    # pca = PCA(n_components=300) # vgg16
     # pca = PCA(n_components=700)
     new_embedding_vec = pca.fit_transform(embedding_vec)
 

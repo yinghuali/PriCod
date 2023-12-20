@@ -25,4 +25,10 @@ python feature_importance.py --path_original_out_vec './models/original_out_vec/
 python feature_importance.py --path_original_out_vec './models/original_out_vec/cifar100_DenseNet201_12_orginal_vec.pkl' --path_onDevice_out_vec './models/onDevice_out_vec/cifar100_DenseNet201_12_coreml_vec.pkl' --path_embedding_vec './models/embedding_vec/cifar100_embedding.pkl' --path_y './data/cifar100_y.pkl' --path_save_res './results/importance/cifar100_DenseNet201_12_coreml.json'
 
 
+python feature_importance.py --path_original_out_vec './models/original_out_vec/news_gru_4_orginal_vec.pkl' --path_onDevice_out_vec './models/onDevice_out_vec/news_gru_4_tflite_vec.pkl' --path_embedding_vec './models/embedding_vec/news_embedding.pkl' --path_y './data/news_y.pkl' --path_save_res './results/importance/news_gru_4_tflite.json'
+python feature_importance.py --path_original_out_vec './models/original_out_vec/news_gru_4_orginal_vec.pkl' --path_onDevice_out_vec './models/onDevice_out_vec/news_gru_4_coreml_vec.pkl' --path_embedding_vec './models/embedding_vec/news_embedding.pkl' --path_y './data/news_y.pkl' --path_save_res './results/importance/news_gru_4_coreml.json'
+
+python feature_importance.py --path_original_out_vec './models/original_out_vec/news_lstm_4_orginal_vec.pkl' --path_onDevice_out_vec './models/onDevice_out_vec/news_lstm_4_tflite_vec.pkl' --path_embedding_vec './models/embedding_vec/news_embedding.pkl' --path_y './data/news_y.pkl' --path_save_res './results/importance/news_lstm_4_tflite.json'
+python feature_importance.py --path_original_out_vec './models/original_out_vec/news_lstm_4_orginal_vec.pkl' --path_onDevice_out_vec './models/onDevice_out_vec/news_lstm_4_coreml_vec.pkl' --path_embedding_vec './models/embedding_vec/news_embedding.pkl' --path_y './data/news_y.pkl' --path_save_res './results/importance/news_lstm_4_coreml.json'
+
 

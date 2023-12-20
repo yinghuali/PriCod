@@ -5,7 +5,9 @@ from sklearn.model_selection import train_test_split
 
 path_y_list = ['data/cifar10_y.pkl', 'data/cifar10_y.pkl', 'data/cifar10_y.pkl', 'data/cifar10_y.pkl',
                'data/fashionMnist_y.pkl', 'data/fashionMnist_y.pkl', 'data/fashionMnist_y.pkl', 'data/fashionMnist_y.pkl',
-               'data/plant_y.pkl', 'data/plant_y.pkl', 'data/plant_y.pkl', 'data/plant_y.pkl'
+               'data/plant_y.pkl', 'data/plant_y.pkl', 'data/plant_y.pkl', 'data/plant_y.pkl',
+               'data/cifar100_y.pkl', 'data/cifar100_y.pkl',
+               'data/news_y.pkl', 'data/news_y.pkl',
                ]
 path_original_out_vec_list = ['models/original_out_vec/cifa10_vgg_20_orginal_vec.pkl', 'models/original_out_vec/cifa10_vgg_20_orginal_vec.pkl',
                               'models/original_out_vec/cifa10_alexnet_35_orginal_vec.pkl', 'models/original_out_vec/cifa10_alexnet_35_orginal_vec.pkl',
@@ -13,6 +15,8 @@ path_original_out_vec_list = ['models/original_out_vec/cifa10_vgg_20_orginal_vec
                               'models/original_out_vec/fashionMnist_lenet5_3_orginal_vec.pkl', 'models/original_out_vec/fashionMnist_lenet5_3_orginal_vec.pkl',
                               'models/original_out_vec/plant_nin_6_orginal_vec.pkl', 'models/original_out_vec/plant_nin_6_orginal_vec.pkl',
                               'models/original_out_vec/plant_vgg19_20_orginal_vec.pkl', 'models/original_out_vec/plant_vgg19_20_orginal_vec.pkl',
+                              'models/original_out_vec/cifar100_DenseNet201_12_orginal_vec.pkl', 'models/original_out_vec/cifar100_ResNet152_1_orginal_vec.pkl',
+                              'models/original_out_vec/news_gru_4_orginal_vec.pkl', 'models/original_out_vec/news_lstm_4_orginal_vec.pkl'
 
 
                          ]
@@ -24,11 +28,10 @@ path_onDevice_out_vec_list = ['models/onDevice_out_vec/cifa10_vgg_20_tflite_vec.
                               'models/onDevice_out_vec/fashionMnist_lenet5_3_tflite_vec.pkl', 'models/onDevice_out_vec/fashionMnist_lenet5_3_coreml_vec.pkl',
                               'models/onDevice_out_vec/plant_nin_6_tflite_vec.pkl', 'models/onDevice_out_vec/plant_nin_6_coreml_vec.pkl',
                               'models/onDevice_out_vec/plant_vgg19_20_tflite_vec.pkl', 'models/onDevice_out_vec/plant_vgg19_20_coreml_vec.pkl',
+
+                              'models/onDevice_out_vec/cifar100_DenseNet201_12_coreml_vec.pkl', 'models/onDevice_out_vec/cifar100_ResNet152_1_coreml_vec.pkl',
+                              'models/onDevice_out_vec/news_gru_4_coreml_vec.pkl', 'models/onDevice_out_vec/news_lstm_4_coreml_vec.pkl'
                          ]
-
-
-
-
 
 
 def get_top_miss(distance, test_y, onDevice_pre_y):
@@ -77,21 +80,23 @@ def main(path_y_list, path_original_out_vec_list, path_onDevice_out_vec_list):
         onDevice_out_vec = pickle.load(open(path_onDevice_out_vec, 'rb'))
 
         y = pickle.load(open(path_y, 'rb'))
-        y = [i[0] for i in y]
+        if y.shape == (y.size,):
+            y = y
+        else:
+            y = np.array([i[0] for i in y])
 
         original_out_vec_train, original_out_vec_test, train_y, test_y = train_test_split(original_out_vec, y, test_size=0.3, random_state=0)
         onDevice_out_vec_train, onDevice_out_vec_test, _, _ = train_test_split(onDevice_out_vec, y, test_size=0.3, random_state=0)
 
         onDevice_pre_y = np.argmax(onDevice_out_vec_test, axis=1)
 
-        distance = euclidean_distance(original_out_vec_test, onDevice_out_vec_test)
+        # distance = euclidean_distance(original_out_vec_test, onDevice_out_vec_test)
+
         # distance = manhattan_distance(original_out_vec_test, onDevice_out_vec_test)
         # distance = chebyshev_distance(original_out_vec_test, onDevice_out_vec_test)
         # distance = sum_squared_differences(original_out_vec_test, onDevice_out_vec_test)
-        # distance = bhattacharyya_distance(original_out_vec_test, onDevice_out_vec_test)
-        # distance = wasserstein(original_out_vec_test, onDevice_out_vec_test)
-        # distance = mse_distance(original_out_vec_test, onDevice_out_vec_test)
-        # distance = mad_distance(original_out_vec_test, onDevice_out_vec_test)
+        distance = wasserstein(original_out_vec_test, onDevice_out_vec_test)
+
 
         dic = get_top_miss(distance, test_y, onDevice_pre_y)
         key_list = ['top_0t_to_1t', 'top_1t_to_2t', 'top_2t_to_3t', 'top_3t_to_4t', 'top_4t_to_5t', 'top_5t_to_6t', 'top_6t_to_7t', 'top_7t_to_8t', 'top_8t_to_9t', 'top_9t_to_10t']
