@@ -17,11 +17,6 @@ path_y = args.path_y
 path_onDevice_out_vec = args.path_onDevice_out_vec
 save_subject_name = args.subject_name
 
-# nb_classes = 10
-# path_y = '../data/cifar10_y.pkl'
-# path_onDevice_out_vec = '../models/onDevice_out_vec/cifa10_alexnet_35_coreml_vec.pkl'
-# save_subject_name = 'original_cifa10_alexnet_35_coreml'
-
 
 def write_result(content, file_name):
     re = open(file_name, 'a')

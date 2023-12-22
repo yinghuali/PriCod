@@ -205,3 +205,4 @@ old_tables/*
 tables/*
 ATS/result.txt
 ATS/*.sh
+ATS/*.txt
