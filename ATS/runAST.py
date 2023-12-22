@@ -7,7 +7,6 @@ from sklearn.model_selection import train_test_split
 ap = argparse.ArgumentParser()
 
 ap.add_argument("--nb_classes", type=int)
-ap.add_argument("--path_x", type=str)
 ap.add_argument("--path_y", type=str)
 ap.add_argument("--path_onDevice_out_vec", type=str)
 ap.add_argument("--subject_name", type=str)
@@ -20,7 +19,6 @@ path_onDevice_out_vec = args.path_onDevice_out_vec
 save_subject_name = args.subject_name
 
 # nb_classes = 10
-# path_x = '../data/cifar10_x.pkl'
 # path_y = '../data/cifar10_y.pkl'
 # path_onDevice_out_vec = '../models/onDevice_out_vec/cifa10_alexnet_35_coreml_vec.pkl'
 # save_subject_name = 'original_cifa10_alexnet_35_coreml'
@@ -68,7 +66,6 @@ def apfd(error_idx_list, pri_idx_list):
 
 
 def main():
-    x = pickle.load(open(path_x, 'rb'))
     y = pickle.load(open(path_y, 'rb'))
     if y.shape == (y.size,):
         y = y
@@ -81,10 +78,9 @@ def main():
     target_train_pre, target_test_pre, train_y, test_y = train_test_split(onDevice_pre_y, y, test_size=0.3, random_state=0)
     onDevice_out_vec_train, onDevice_out_vec_test, _, _ = train_test_split(onDevice_out_vec, y, test_size=0.3, random_state=0)
     miss_train_label, miss_test_label, idx_miss_test_list = get_miss_lable(target_train_pre, target_test_pre, train_y, test_y)
-    x_train, x_test, _, _ = train_test_split(x, y, test_size=0.3,random_state=0)
 
     ats = ATS()
-    div_rank, _, _ = ats.get_priority_sequence(x_test, target_test_pre, nb_classes, onDevice_out_vec_test, th=0.001)
+    div_rank, _, _ = ats.get_priority_sequence(onDevice_out_vec_test, target_test_pre, nb_classes, onDevice_out_vec_test, th=0.001)
     ast_rank_idx = div_rank
     ast_apfd = apfd(idx_miss_test_list, ast_rank_idx)
     print(ast_apfd)
