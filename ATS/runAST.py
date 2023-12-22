@@ -66,6 +66,7 @@ def apfd(error_idx_list, pri_idx_list):
     apfd = 1 - sum(TF_list)*1.0 / (n*m) + 1 / (2*n)
     return apfd
 
+
 def main():
     x = pickle.load(open(path_x, 'rb'))
     y = pickle.load(open(path_y, 'rb'))
