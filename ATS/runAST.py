@@ -13,7 +13,6 @@ ap.add_argument("--subject_name", type=str)
 args = ap.parse_args()
 
 nb_classes = args.nb_classes
-path_x = args.path_x
 path_y = args.path_y
 path_onDevice_out_vec = args.path_onDevice_out_vec
 save_subject_name = args.subject_name
