@@ -203,4 +203,5 @@ models/onDevice_models/cifar100*
 models/densenet201.py
 old_tables/*
 tables/*
-
+ATS/result.txt
+ATS/*.sh

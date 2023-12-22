@@ -1,13 +1,35 @@
 from ATS import ATS
 import pickle
 import numpy as np
+import argparse
 from sklearn.model_selection import train_test_split
 
-nb_classes = 10
-path_x = '../data/cifar10_x.pkl'
-path_y = '../data/cifar10_y.pkl'
-path_onDevice_out_vec = '../models/onDevice_out_vec/cifa10_alexnet_35_coreml_vec.pkl'
+ap = argparse.ArgumentParser()
 
+ap.add_argument("--nb_classes", type=int)
+ap.add_argument("--path_x", type=str)
+ap.add_argument("--path_y", type=str)
+ap.add_argument("--path_onDevice_out_vec", type=str)
+ap.add_argument("--subject_name", type=str)
+args = ap.parse_args()
+
+nb_classes = args.nb_classes
+path_x = args.path_x
+path_y = args.path_y
+path_onDevice_out_vec = args.path_onDevice_out_vec
+save_subject_name = args.subject_name
+
+# nb_classes = 10
+# path_x = '../data/cifar10_x.pkl'
+# path_y = '../data/cifar10_y.pkl'
+# path_onDevice_out_vec = '../models/onDevice_out_vec/cifa10_alexnet_35_coreml_vec.pkl'
+# save_subject_name = 'original_cifa10_alexnet_35_coreml'
+
+
+def write_result(content, file_name):
+    re = open(file_name, 'a')
+    re.write('\n' + content)
+    re.close()
 
 
 def get_idx_miss_class(target_pre, test_y):
@@ -64,8 +86,8 @@ def main():
     div_rank, _, _ = ats.get_priority_sequence(x_test, target_test_pre, nb_classes, onDevice_out_vec_test, th=0.001)
     ast_rank_idx = div_rank
     ast_apfd = apfd(idx_miss_test_list, ast_rank_idx)
-
     print(ast_apfd)
+    write_result(save_subject_name+'->'+str(ast_apfd), 'result.txt')
 
 
 if __name__ == '__main__':
