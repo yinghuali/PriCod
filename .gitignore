@@ -206,3 +206,8 @@ tables/*
 ATS/result.txt
 ATS/*.sh
 ATS/*.txt
+models/onDevice_models/*
+models/example/*
+example/*
+*.sh
+
